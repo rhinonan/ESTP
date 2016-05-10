@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var apiUsers = require('./routes/api/users');
 var apiActivity = require('./routes/api/activity');
+var apiTopic = require('./routes/api/topic');
 //设置跨域
 var cors = require('express-cors');
  
@@ -38,6 +39,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/api/users', apiUsers);
 app.use('/api/activity', apiActivity);
+app.use('/api/topic', apiTopic);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

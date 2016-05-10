@@ -36,7 +36,21 @@ var ActivitySchema = new mongoose.Schema({
   date: {type: Date, default: Date.now },
   holdDate: {type: Date, default: Date.now }
 });
- 
+
+var TopicSchema = new mongoose.Schema({
+  userId: String,
+  sponsor: String, // 发起人
+  title: String,
+  detail: String,
+  tag: [String],
+  read: Number,
+  praise: Number,
+  date: {
+    type : Date,
+    default: Date.now
+  }
+});
 mongoose.model('Users', UsersSchema);
 mongoose.model('Dynamic', DynamicSchema);
 mongoose.model('Activity', ActivitySchema);
+mongoose.model('Topic', TopicSchema);
