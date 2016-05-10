@@ -50,7 +50,35 @@ var TopicSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+var SiteSchema = new mongoose.Schema({
+  title: String, //场地名称
+  master: String, // 场地负责人
+  detial: String, //场地详情
+  price: Number, // 场地价格
+  address: String, // 场地地址
+  tel: String, // 场地联系电话
+  merit: String, //场地优点
+  imgs:[String], // 场地图片
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+var CommentSchema = new mongoose.Schema({
+  content: String,
+  userId: String,
+  sponsor: String,
+  itemId: String, // 对应 话题 动态等的id
+  date:{
+    type: Date,
+    default: Date.now
+  }
+});
 mongoose.model('Users', UsersSchema);
 mongoose.model('Dynamic', DynamicSchema);
 mongoose.model('Activity', ActivitySchema);
 mongoose.model('Topic', TopicSchema);
+mongoose.model('Site', SiteSchema);
+mongoose.model('Comment', CommentSchema);
