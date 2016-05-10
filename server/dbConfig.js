@@ -29,6 +29,10 @@ var ActivitySchema = new mongoose.Schema({
   tel: String, //活动联系电话
   charge: Number, // 活动收费，可以为空
   img: String, // 活动的图片地址
+  peopleNum: {
+    type: Number,
+    dafalt: 0
+  },
   date: {type: Date, default: Date.now },
   holdDate: {type: Date, default: Date.now }
 });
