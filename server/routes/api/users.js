@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
        * @type {[type]}
        */
       userId = req.query.userId;
-      console.log(userId)
       UsersModel.findById(userId, function (err, user) {
         if(err || !user){
           res.json({
