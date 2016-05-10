@@ -194,6 +194,13 @@ router.post('/', function (req, res, next) {
       UsersModel.findOne({
         username: username
       }, function (err, user) {
+        if(!user){
+          res.json({
+            success: false,
+            msg:'用户名错误'
+          });
+          return false;
+        }
         if(user.password === req.body.password){
           res.json({
             success: true,

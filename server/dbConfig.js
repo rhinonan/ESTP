@@ -11,41 +11,28 @@ var UsersSchema = new mongoose.Schema({
   data: { type: Date, default: Date.now }
 
 });
-// var FleaSchema = new mongoose.Schema({
-//   name: String,
-//   price: Number,
-//   schoolId: String,
-//   description: String,
-//   newnessRate: Number,
-//   userId:String,
-//   imgs: [String],
-// });
-// var StoreSchema = new mongoose.Schema({
-//   name: String,
-//   schoolId: String,
-//   username: String,
-//   description: String,
-//   userId: String,
-//   img: String,
-// });
-// var CoSchema = new mongoose.Schema({
-//   name: String,
-//   schoolId: String,
-//   description: String,
-//   storeId: String,
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   },
-//   stock: Number,
-//   price: Number,
-//   img: String,
-// });
-// var SchoolSchema = new mongoose.Schema({
-//   schoolname: String,
-// });
-mongoose.model('Users',UsersSchema);
-// mongoose.model('School', SchoolSchema);
-// mongoose.model('Flea', FleaSchema);
-// mongoose.model('Store', StoreSchema);
-// mongoose.model('Co',CoSchema);
+var DynamicSchema = new mongoose.Schema({
+  userId: String, //发布动态的用户
+  title: String, //动态的标题
+  content: String, //动态的内容
+  praise: Number, // 点赞个数
+  comment: Number, // 评论个数
+  date: {type: Date, default: Date.now }
+});
+var ActivitySchema = new mongoose.Schema({
+  userId: String,
+  title: String,
+  detial: String, //活动详情
+  address: String, //活动举办地址
+  unit: String, // 活动举办单位
+  master: String, // 活动负责人姓名
+  tel: String, //活动联系电话
+  charge: Number, // 活动收费，可以为空
+  img: String, // 活动的图片地址
+  date: {type: Date, default: Date.now },
+  holdDate: {type: Date, default: Date.now }
+});
+ 
+mongoose.model('Users', UsersSchema);
+mongoose.model('Dynamic', DynamicSchema);
+mongoose.model('Activity', ActivitySchema);
