@@ -11,6 +11,8 @@ var apiUsers = require('./routes/api/users');
 var apiActivity = require('./routes/api/activity');
 var apiTopic = require('./routes/api/topic');
 var apiComment = require('./routes/api/comment');
+var apiSite = require('./routes/api/site');
+var apiDynamic = require('./routes/api/dynamic');
 //设置跨域
 var cors = require('express-cors');
  
@@ -42,6 +44,8 @@ app.use('/api/users', apiUsers);
 app.use('/api/activity', apiActivity);
 app.use('/api/topic', apiTopic);
 app.use('/api/comment', apiComment);
+app.use('/api/site', apiSite);
+app.use('/api/dynamic', apiDynamic);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
