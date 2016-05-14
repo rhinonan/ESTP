@@ -12,6 +12,7 @@
     "ejs": "^2.4.1",
     "express": "~4.13.1",
     "express-cors": "0.0.3",
+    "formidable": "^1.0.17",
     "jade": "~1.11.0",
     "mongoose": "^4.4.16",
     "morgan": "~1.6.1",

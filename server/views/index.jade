@@ -3,3 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  form(action="/api/image" method="POST" enctype="multipart/form-data")
+    div Select an image to upload:
+    input(type="file" name="iamge")
+    input(type="submit" valube="Upload Image")
