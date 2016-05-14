@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
           });
           // res.status(404);
         }else{
-          delete user.password;
+          user.password = null;
           res.json({
             success: true,
             data: user
@@ -83,6 +83,13 @@ router.get('/', function(req, res, next) {
         }
       });
       break;
+    default:
+      res.status(404);
+      res.json({
+        success: false,
+        msg: '参数错误'
+      });
+    break;
   }
 });
 
