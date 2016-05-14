@@ -1,0 +1,54 @@
+<ion-view view-title="个人中心">
+  <ion-content has-subheader="false" class="center">
+     <a class="item item-avatar" href="#"  ng-if="loginState">
+      <img src="http://ww1.sinaimg.cn/crop.0.0.1242.1242.1024/006boC82jw8eulzgtza8uj30yi0yi0tn.jpg">
+      <h2>{{userInfo.username}}</h2>
+      <p>{{userInfo.worktype}}&emsp;&emsp;&emsp;&emsp;Tel:{{userInfo.tel}}</p>
+    </a>
+    <div class="item login-tips" href="#"  ng-if="!loginState">
+      <div>
+        Sorry, 您还没有登录！
+      </div>
+      <div class="right">
+        <div class="button button-small button-assertive">
+          登录/注册
+        </div >
+      </div>
+    </div>
+
+    <div class="list my-content" >
+      <div class="item item-divider">
+        我的内容
+      </div>
+      <div class="item dynamic row">
+        <div class="left col col-25">
+          最新动态    
+        </div>
+        <div class="right col col-75">
+          这是一条最新发布动态的内容 内容可能很长很长~
+        </div>
+      </div>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-ios-pie-outline"></i>
+        我发起的项目需求
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-ios-chatboxes-outline"></i>
+        我发起的创业话题
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-ios-color-filter-outline"></i>
+        我发起的创业活动
+      </a>
+       <div class="item item-divider">
+         系统相关
+       </div>
+
+      <!-- <a class="item  " href="#"> -->
+        <span class="button button-full button-assertive">
+          退出登录
+        </span>
+      <!-- </a> -->
+    </div>
+  </ion-content>
+</ion-view>
