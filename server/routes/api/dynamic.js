@@ -15,6 +15,7 @@ var DynamicModel = mongoose.model('Dynamic');
 router.get('/', function(req, res, next) {
     var type = req.query.type,
         page,
+        userId,
         dynamicId,
         pageNum;
     switch (type) {
@@ -66,7 +67,32 @@ router.get('/', function(req, res, next) {
         /**
          * 默认
          */
+      case 'userId':
+        userId = req.query.userId;
+        page = req.query.page || 0;
+        pageNum = req.query.pageNum || 0;
+        DynamicModel.find({
+          userId: userId
+        })
+        .skip(page * pageNum)
+        .limit(pageNum)
+        .exec(function(err, dynamics) {
+          if(err || !dynamics){
+            res.status(404);
+            res.json({
+              success: false,
+              msg: '参数错误'
+            });
+          }else{
+            res.json({
+              success: true,
+              data: dynamics
+            });
+          }
+        });
+      break;
       default:
+        res.status(404);
         res.json({
             success: false,
             msg: '请求错误'
