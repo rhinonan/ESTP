@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
   type = req.query.type;
   if(type === 'all'){
     WorkTypeModel.find({}, function (err, data) {
-      console.log(data);
       if(err){
         res.json({
           success: false,
@@ -52,7 +51,6 @@ router.post('/', function (req, res) {
         });
         res.status(404);
       }else{
-        console.log(data);
         data.type = to;
         data.date = new Date();
         data.save(function (err, data) {
@@ -75,7 +73,7 @@ router.post('/', function (req, res) {
     res.json({
       success: false,
       msg: '参数错误'
-    })
+    });
   }
 });
 module.exports = router;

@@ -15,6 +15,7 @@ var DynamicModel = mongoose.model('Dynamic');
 router.get('/', function(req, res, next) {
     var type = req.query.type,
         page,
+        dynamicId,
         pageNum;
     switch (type) {
       /**
@@ -93,7 +94,7 @@ router.post('/', function(req, res, next) {
       case 'add':
         userId = req.query.userId;
           var newDynamic = {
-            userId: '121212121212121',
+            userId: userId,
             title: req.body.title,
             content: req.body.content,
             praise: 0,

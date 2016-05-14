@@ -5,10 +5,7 @@ require('../../dbConfig.js');
 
 var CommentModel = mongoose.model('Comment');
 var UsersModel = mongoose.model('Users');
-router.all('/', function (req,res,next) {
-  console.log('ad');
-  next();
-});
+
 router.get('/', function (req, res) {
   var userId;
   var commentId;
@@ -123,7 +120,6 @@ router.post('/', function (req, res) {
         
       }else{
         sponsor = user.user;
-        console.log(req.body.content);
         newComment = {
           content: req.body.content,
           userId: userId,

@@ -84,6 +84,26 @@ var WorkTypeSchema = new mongoose.Schema({
     ddefault: Date.now
   }
 });
+
+/**
+ * 项目需求
+ */
+var ProjectSchema = new mongoose.Schema({
+  name: String,
+  intro: String,
+  area: String,
+  industry: String,
+  link: String,//项目链接
+  detail: String,// 项目详情
+  requireType: String,
+  requireDetail: String,
+  userId: String,
+  date: {
+    type : Date,
+    default: Date.now
+  }
+});
+
 mongoose.model('Users', UsersSchema);
 mongoose.model('Dynamic', DynamicSchema);
 mongoose.model('Activity', ActivitySchema);
@@ -91,3 +111,4 @@ mongoose.model('Topic', TopicSchema);
 mongoose.model('Site', SiteSchema);
 mongoose.model('Comment', CommentSchema);
 mongoose.model('WorkType', WorkTypeSchema);
+mongoose.model('Project', ProjectSchema);

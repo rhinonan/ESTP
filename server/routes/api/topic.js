@@ -134,7 +134,6 @@ router.post('/', function (req, res) {
             });
             res.status(404);
           }else{
-            console.log(topic);
             topic.praise = topic.praise + 1;
             topic.save(function (err) {
               if(err){
