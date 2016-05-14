@@ -76,9 +76,18 @@ var CommentSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+var WorkTypeSchema = new mongoose.Schema({
+  type: String,
+  date: {
+    type: Date,
+    ddefault: Date.now
+  }
+});
 mongoose.model('Users', UsersSchema);
 mongoose.model('Dynamic', DynamicSchema);
 mongoose.model('Activity', ActivitySchema);
 mongoose.model('Topic', TopicSchema);
 mongoose.model('Site', SiteSchema);
 mongoose.model('Comment', CommentSchema);
+mongoose.model('WorkType', WorkTypeSchema);

@@ -13,6 +13,7 @@ var apiTopic = require('./routes/api/topic');
 var apiComment = require('./routes/api/comment');
 var apiSite = require('./routes/api/site');
 var apiDynamic = require('./routes/api/dynamic');
+var apiWorkType = require('./routes/api/workType');
 //设置跨域
 var cors = require('express-cors');
  
@@ -46,6 +47,7 @@ app.use('/api/topic', apiTopic);
 app.use('/api/comment', apiComment);
 app.use('/api/site', apiSite);
 app.use('/api/dynamic', apiDynamic);
+app.use('/api/workType', apiWorkType);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
