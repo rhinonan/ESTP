@@ -22,7 +22,7 @@ var DynamicSchema = new mongoose.Schema({
 var ActivitySchema = new mongoose.Schema({
   userId: String,
   title: String,
-  detial: String, //活动详情
+  detail: String, //活动详情
   address: String, //活动举办地址
   unit: String, // 活动举办单位
   master: String, // 活动负责人姓名

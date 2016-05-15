@@ -20,11 +20,11 @@ router.get('/', function (req, res) {
       activityId = req.query.activityId ;
       ActivityModel.findById(activityId, function (err, ac) {
         if(err || !ac){
+          res.status(404);
           res.json({
             suceess: false,
             msg: err || '未传递id'
           });
-          res.status(404);
         }else{
           res.json({
             success: true,
@@ -81,8 +81,8 @@ router.post('/', function (req, res) {
       newActicity = {
         userId: req.body.userId,
         title: req.body.title,
-        detial: req.body.detiald,
-        address: req.body.addressd,
+        detail: req.body.detail,
+        address: req.body.address,
         unit: req.body.unit,
         master: req.body.master,
         tel: req.body.tel,

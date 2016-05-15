@@ -39,16 +39,16 @@ router.get('/', function (req, res) {
        */
       page = req.query.page || 0;
       pageNum = req.query.pageNum || 10;
-      Topic.find({})
-      .skpi(page * pageNum)
+      TopicModel.find({})
+      .skip(page * pageNum)
       .limit(pageNum)
       .exec(function (err, topics) {
-        if(err){
+        if(err || !topics){
+          res.status(404);
           res.json({
             success: false,
-            msg: err
+            msg: err || '未查询到数据'
           });
-          res.status(404);
         }else{
           res.json({
             success: true,
