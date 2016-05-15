@@ -209,6 +209,7 @@ router.post('/', function (req, res, next) {
         username: username
       }, function (err, user) {
         if(!user){
+          res.status(404);
           res.json({
             success: false,
             msg:'用户名错误'
@@ -216,15 +217,17 @@ router.post('/', function (req, res, next) {
           return false;
         }
         if(user.password === req.body.password){
+          user.password = '';
           res.json({
             success: true,
-            msg: '登录成功'
+            msg: '登录成功',
+            data:user
           });
         }else{
           res.status(404);
           res.json({
             success: false,
-            msg: '账户名或者密码错误'
+            msg: '密码错误'
           });
         }
       });

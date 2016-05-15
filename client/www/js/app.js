@@ -12,9 +12,13 @@ angular.module('starter', ['ionic',
   'tabsCtrl',
   'centerCtrl',
   'loginCtrl',
+  'dynamicCtrl',
   'backend',
   'userSer',
+  'dynamicSer',
   'workTypeSer',
+  'commentSer',
+  'filter',
   'starter.controllers', 
   'starter.services'])
 
@@ -61,6 +65,24 @@ angular.module('starter', ['ionic',
       }
     }
   })
+  .state('tab.dynamic', {
+    url: '/dynamic',
+    views: {
+      'tab-dynamic': {
+        templateUrl: 'templates/dynamic/index.html',
+        controller: 'dynamicCtrl'
+      }
+    }
+  })
+  .state('tab.dynamicDetail', {
+    url: '/dynamic/:dynamicId',
+    views: {
+      'tab-dynamic': {
+        templateUrl: 'templates/dynamic/dynamicDetail.html',
+        controller: 'dynamicDetailCtrl'
+      }
+    }
+  })
 
   .state('tab.chats', {
     url: '/chats',
@@ -83,6 +105,7 @@ angular.module('starter', ['ionic',
 
   .state('tab.center', {
     url: '/center',
+    cache: false, 
     views: {
       'tab-center': {
         templateUrl: 'templates/center/index.html',
@@ -118,18 +141,18 @@ angular.module('starter', ['ionic',
     }
   })
   .state('login', {
-    url: 'tab',
+    url: '/login',
     controller: 'loginCtrl',
     templateUrl: 'templates/login/login.html',
   })
   .state('register', {
-    url: 'tab',
+    url: '/register',
     controller: 'registerCtrl',
     templateUrl: 'templates/login/register.html',
   });
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/dynamic');
 
 });

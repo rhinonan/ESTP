@@ -5,6 +5,7 @@ require('../../dbConfig.js');
 
 var CommentModel = mongoose.model('Comment');
 var UsersModel = mongoose.model('Users');
+var DynamicModel = mongoose.model('Dynamic');
 
 router.get('/', function (req, res) {
   var userId;
@@ -21,6 +22,7 @@ router.get('/', function (req, res) {
       commentId = req.query.commentId;
       CommentModel.findById(commentId, function (err, comment) {
         if(err || !comment){
+          res.status(404);
           res.json({
             success: false,
             msg: err || '未传递评论id'
@@ -48,11 +50,11 @@ router.get('/', function (req, res) {
       .limit(pageNum)
       .exec(function (err, comments) {
         if(err){
+          res.status(404);
           res.json({
             success: false,
             msg: err
           });
-          res.status(404);
         }else{
           res.json({
             success: true,
@@ -68,11 +70,11 @@ router.get('/', function (req, res) {
         itemId: itemId
       }, function (err, number) {
         if(err){
+          res.status(404);
           res.json({
             success: false,
             msg: err,
           });
-          res.status(404);
         }else{
           res.json({
             success: true,
@@ -85,11 +87,11 @@ router.get('/', function (req, res) {
 
     break;
     default:
+      res.status(404);
       res.json({
         success: false,
         msg: '参数错误'
       });
-      res.status(404);
     break;
   }
 });
@@ -103,6 +105,7 @@ router.post('/', function (req, res) {
   var newComment;
 
   type = req.body.type;
+  console.log(type);
   switch(type){
     case 'add':
     /**
@@ -112,11 +115,11 @@ router.post('/', function (req, res) {
     itemId = req.body.itemId;
     UsersModel.findById(userId, function (err, user) {
       if(err || !user || !itemId){
+        res.status(404);
         res.json({
           success: false,
           msg: err || '未传递userId或者itemId'
         });
-        res.status(404);
         
       }else{
         sponsor = user.user;
@@ -130,11 +133,11 @@ router.post('/', function (req, res) {
         newCommentModel = new CommentModel(newComment);
         newCommentModel.save(function (err, comment) {
           if(err){
+            res.status(404);
             res.json({
               success: false,
               msg: err,
             });
-            res.status(404);
           }else{
             res.json({
               success: true,
@@ -146,11 +149,11 @@ router.post('/', function (req, res) {
     });
     break;
     default:
+      res.status(404);
       res.json({
         success: false,
         msg: '参数错误'
       });
-      res.status(404);
     break;
   }
 });

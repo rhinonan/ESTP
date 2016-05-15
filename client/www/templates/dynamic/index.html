@@ -1,0 +1,73 @@
+<ion-view view-title="创业动态圈">
+  <ion-content>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+    <div class="content">
+    <ul class="dynamic-outside">
+      <!--********每一个li是一个动态************-->
+      <li class="dynamic"  ng-repeat="dynamic in dynamics">
+        <div class="dynamic-head">
+          <img ng-src="{{users[$index].avatar}}" alt="" class="dynamic-cover" title="封面" alt="封面">
+          <div class="names">
+            <ul>
+              <li class="names-name"><a href="#/tab/circle/{{circle.id}}">{{users[$index].user}}</a></li>
+              <li class="names-tab">{{users[$index].worktype}}</li>
+              <!-- <li class="names-tab">{{circle.company}} | {{circle.distance}}</li> -->
+            </ul>
+          </div>
+          <span class="dynamic-time">{{dynamic.date | date:'yyyy-MM-dd'}}</span>
+        </div>
+        <div class="dynamic-body" ng-click="goDetail(dynamic._id)">
+          <div class="artile">
+            <div class="title">{{dynamic.title}}</div>
+            <div class="cont">
+              <a href="#/tab/circle/{{circle.id}}">{{dynamic.content}}</a><br/>
+              <!-- <div class="row">
+                <div class="col col-33">
+                  <img ng-src="{{circle.content.detail[0].content.imgs[1]}}" alt="">
+                </div>
+                <div class="col col-33">
+                  <img ng-src="{{circle.content.detail[0].content.imgs[1]}}" alt="">
+                </div>
+                <div class="col col-33">
+                  <img ng-src="{{circle.content.detail[0].content.imgs[2]}}" alt="">
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col " ng-if="!dynamic.ifPraise" ng-click="praise($index)">
+            <i class="ion ion-thumbsup"></i>
+            <a  class="subdued">{{dynamic.praise}}</a>
+          </div>
+          <div class="col assertive" ng-if="dynamic.ifPraise">
+            <i class="ion ion-thumbsup"></i>
+            <a  class="subdued">{{dynamic.praise}}</a>
+          </div>
+          <div class="col" ng-click="showCommentForm($index)">
+            <i class="ion ion-ios-chatboxes-outline"></i>
+            <a  class="subdued">{{dynamic.comment}}</a>
+          </div>
+        </div>
+        <div class="item item-input-inset" ng-if="dynamic.showComment">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="评论" ng-model="dynamic.tempComment">
+            </label>
+            <button class="button button-small" ng-click="subimtComment($index)">
+              提交
+            </button>
+          </div>
+        <!-- <a href="#/tab/circle/{{circle.id}}" class="see-more">查看更多</a> -->
+        <div class="clear"></div>
+        <div class="color"></div>
+      </li>
+      <!--*******一个动态结束************-->
+    
+    
+    </ul>
+     
+  </div>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  </ion-content>
+</ion-view>

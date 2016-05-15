@@ -1,1 +1,383 @@
 /* Empty. Add your own CSS if you like */
+div,a,p,ul,li,img,span,h1,h2,h3,h4,h5{
+	margin: 0px;
+	padding: 0px;
+}
+/* line 1, ../sass/app.scss */
+.content,.content-in{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-size: 100%;
+}
+.content .will-outside,.dynamic-outside{
+	margin: 0px;
+	padding: 0px;
+}
+.clear{
+	clear: both;
+}
+
+/*
+ *拍砖会列表
+*/
+.content .will {
+  display: inline-block;
+  width: 100%;
+  height: 69px;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.content .will .will-cover{
+	display: inline-block;
+	float: left;
+	margin: 3px 0 0 7px;
+	width: 80px;
+}
+.content .will .will-describe{
+	float: left;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	margin: 3px 0 0 11px;
+}
+.content .will .will-describe li{
+	margin-top: 0px;
+	font-size: 14px;
+}
+.content .will .will-describe a{
+	vertical-align: baseline;
+	text-decoration: none;
+	font-size: 16px !important;
+	color: #171717;
+	float: left;
+	display: block;
+}
+.content .will .will-describe .will-num{
+	color: #777777;
+}
+.content .will .will-describe .will-state-run{
+	color: #cc874f;
+}
+.content .will .will-describe .will-state-wait{
+	color: #58b4a4;
+}
+
+/*
+ *拍砖会详情
+*/
+.content-in .will-in-head{
+	width: 100%;
+	height: auto;
+}
+.content-in .will-in-head .will-in-cover{
+	
+}
+
+/**
+ * 动态列表
+ */
+.content .dynamic-outside{
+	background: #f0f0f0;
+}
+.content .dynamic{
+	list-style: none;
+	background: #fff;
+	margin-bottom: 6px;
+}
+.content .dynamic .dynamic-head{
+	width: 100%;
+	height: 62px;
+	border-bottom: 1px solid #dcdcdc;
+	float: left;
+	position: relative;
+}
+.content .dynamic .dynamic-head .dynamic-cover{
+	width: 48px;
+	height: 48px;
+	float: left;
+	margin: 6px 0 0 10px;
+}
+.content .dynamic .dynamic-head .names{
+	float: left;
+	margin: 6px 0 0 5px;
+}
+.content .dynamic .dynamic-head .names li{
+	list-style: none;
+	margin-top: -3px;
+}
+.content .dynamic .dynamic-head .names .names-name a{
+	text-decoration: none;
+	font-size: 13px;
+	color: #171717;
+}
+.content .dynamic .dynamic-head .names .names-tab{
+	font-size: 12px;
+	color: #575757;
+}
+.content .dynamic .dynamic-head .dynamic-time{
+	position: absolute;
+	font-size: 13px;
+	color: #b9b9b9;
+	right: 10px;
+	bottom: 18px;
+}
+.content .dynamic .dynamic-body{
+	float: left;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	padding: 5px 10px;
+}
+.content .dynamic .dynamic-body .artile{
+	float: left;
+	font-size: 15px;
+	color: #c35728;
+	margin: 4px 0 0 0px;
+}
+.content .dynamic .dynamic-body .cont{
+	float: left;
+	font-size: 13px;
+	color: #373737;
+	margin-top: 5px;
+	line-height: 18px;
+}
+.content .dynamic .dynamic-body .cont a{
+	color: #333;
+	text-decoration: none;
+}
+.content .dynamic .dynamic-body .cont img{
+	width: 80px;
+}
+.content .dynamic .see-more{
+	float: left;
+	display: inline-block;
+	width: 100%;
+	font-size: 13px;
+	text-decoration: none;
+	color: #b9b9b9;
+	text-align: center;
+	height: 25px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+/**
+ * 动态详情
+ */
+.content-in .dynamic-cover{
+	float: left;
+	width: 100%;
+	height: 52px;
+	position: relative;
+	background: #46d9bf;
+	margin-bottom: 15px;
+	background: url('../img/circle-detail-cover.gif');
+}
+.content-in .dynamic-cover img{
+	width: 67px;
+	height: 67px;
+	position: absolute;
+	top: 5px;
+	right: 20px;
+	border-radius: 50%;
+	z-index: 9999;
+}
+.content-in .dynamic{
+	display: block;
+	width: 100%;
+	padding: 0 10px 0 45px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	margin-top: 4px;
+}
+.content-in .dynamic .time-shaft{
+	position: absolute;
+	left: 10px;
+	top: 0px;
+	font-size: 13px;
+	color: #189881;
+}
+.content-in .dynamic .bar{
+	position: absolute;
+	left: 21px;
+	top: 21px;
+	border-left: 1px solid #189881;
+	/*background: #189881;*/
+	width: 1px;
+	height: 100%;
+	padding: 0px !important;
+}
+.content-in .dynamic .dynamic-body{
+	float: left;
+	border-bottom: 1px solid #dcdcdc;
+	border-top: 1px solid #dcdcdc;
+}
+.content-in .dynamic .dynamic-body .tab{
+	float: left;
+	font-size: 14px;
+	color: #c35728;
+}
+.content-in .dynamic .dynamic-body .cont{
+	float: left;
+	font-size: 13px;
+	color: #373737;
+}
+.content-in .dynamic .dynamic-body .cont img{
+	width: 66px;
+	height: 48px;
+}
+.content-in .dynamic .dynamic-body .bottom-bar{
+	float: right;
+	height: 32px;
+	line-height: 32px;
+	color: #979797;
+	font-size: 13px;
+	width: 100%;
+}
+.content-in .dynamic .dynamic-body .bottom-bar .dy-time{
+	float: left;
+}
+.content-in .dynamic .dynamic-body .bottom-bar span{
+	float: right;
+}
+
+/**
+ * 办公工位
+ */
+.content .site-list{
+	font-size: 13px;
+	color: #575757;
+}
+.content .site-list .site-title{
+	color: #979797;
+}
+.content .site-list .site-num{
+	color: #ff3636;
+}
+
+/**
+ * 办公工位详情
+ */
+.content-in .site-content{
+	width: 100%;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	padding: 5px 10px;
+}
+.content-in .site-content .site-head{
+	float: left;
+	width: 100%;
+}
+.content-in .site-content .site-head .site-cover{
+	width: 48px;
+	height: 48px;
+	float: left;
+	border-radius: 5px;
+}
+.content-in .site-content .site-head .site-head-main{
+	float: left;
+	margin-left: 7px;
+}
+.content-in .site-content .site-head .site-head-main .titile{
+	color: #171717;
+	font-size: 14px;
+}
+.content-in .site-content .site-head .site-head-main .site-describe .site-list{
+	font-size: 13px;
+	color: #575757;
+}
+.content-in .site-content .site-head .site-head-main .site-describe .site-title{
+	color: #979797;
+}
+.content-in .site-content .site-head .site-head-main .site-describe .site-num{
+	color: #ff3636;
+}
+.content-in .site-content .site-body{
+	width: 100%;
+	float: left;
+	font-size: 13px;
+	color: #373737;
+	margin-top: 10px;
+}
+.content-in .site-content .site-body .site-body-title{
+	color: #979797;
+}
+
+
+/**
+ * 创业活动列表
+ */
+.content .activity{
+	height: auto !important;
+	padding: 5px 0px !important;
+	font-size: 13px;
+}
+.content .activity .act-cover{
+	margin-left: 0px !important;
+}
+.content .activity .act-list{
+	color: #979797;
+}
+.content .activity .act-des{
+	margin-left: 9px;
+	/*float: left;*/
+	display: inline-block;	
+}
+
+/**
+ * 创业活动详情
+ */
+.content-in .act-boy img{
+	width: 30%;
+}
+
+/**
+ * 发现
+ */
+.content .find{
+	text-align: center;
+	background: #ccc;
+	border-radius: 10px;
+	float: left;
+	margin-top: 20px;
+	padding: 0 !important;
+	margin-bottom: 10px;
+}
+.content .find a{
+	display: block;
+	width: 100%;
+	text-align: center;
+	height: 82px;
+	line-height: 82px;
+	text-decoration: none;
+	color: #fff;
+	
+}
+.content .find a i{
+	font-size: 20px;
+	vertical-align:middle;
+	margin-top: -2px;
+}
+.content .find1{
+	background: #37bfbd;
+}
+.content .find2{
+	background: #80c26a;
+}
+.content .find3{
+	background: #8c98cc;
+}
+.content .find4{
+	background: #f39b77;
+}
+.content .find5{
+	background: #eb6876;
+}
+.content .find6{
+	background: #54d0ce;
+}
+

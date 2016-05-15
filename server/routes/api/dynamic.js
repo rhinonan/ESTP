@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var extend = require('util')._extend;
 require('../../dbConfig.js');
 
 var DynamicModel = mongoose.model('Dynamic');
-
+var UsersModel = mongoose.model('Users');
 /**
  * 查询动态
  * @param  {[type]} req   [description]
@@ -16,7 +17,9 @@ router.get('/', function(req, res, next) {
     var type = req.query.type,
         page,
         userId,
+        i,
         dynamicId,
+        resData,
         pageNum;
     switch (type) {
       /**
@@ -49,8 +52,8 @@ router.get('/', function(req, res, next) {
         DynamicModel.find({})
           .skip(page * pageNum)
           .limit(pageNum)
-          .exec(function(err, dynamic) {
-            if (err) {
+          .exec(function(err, dynamics) {
+            if (err || !dynamics) {
               res.status(404);
               res.json({
                   success: false,
@@ -58,9 +61,10 @@ router.get('/', function(req, res, next) {
               });
             } else {
               res.json({
-                  success: true,
-                  data: dynamic
+                success: true,
+                data: dynamics
               });
+              
             }
           });
         break;

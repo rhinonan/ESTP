@@ -8,8 +8,8 @@ var UsersSchema = new mongoose.Schema({
   tel: String,
   email: String,
   worktype: String,
-  data: { type: Date, default: Date.now }
-
+  data: { type: Date, default: Date.now },
+  avatar: String
 });
 var DynamicSchema = new mongoose.Schema({
   userId: String, //发布动态的用户

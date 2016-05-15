@@ -1,0 +1,43 @@
+<ion-view view-title="{{circle.content.tag}}">
+  <ion-content>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  <div class="content-in">
+    <div class="dynamic-cover">
+      <a ng-click=showConfirm() href=""><img src="{{circle.cover}}" alt=""/></a>
+    </div>
+    <ul class="dynamic-outside">
+      <!--********每一个li是一个动态************-->
+      <li class="dynamic" ng-click=showConfirm() ng-repeat="content in circle.content.detail">
+        <div class="time-shaft">{{content.content.date}}</div>
+        <div class="bar"></div>
+        <div class="dynamic-body">
+          <!-- <div class="tab">为梦网线下活动</div> -->
+          <div class="cont">
+            {{content.content.text}}</br>
+            <div class="row">
+              <div class="col col-33">
+                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
+              </div>
+              <div class="col col-33">
+                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
+              </div>
+              <div class="col col-33">
+                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
+              </div>
+            </div>
+          </div>
+          <div class="bottom-bar">
+            <div class="dy-time">{{content.content.date2}}</div>
+            <span><i class="ion ion-chatbox-working">评论 ({{content.content.praise}}) </i></span>
+            <span><i class="ion ion-thumbsup">已赞 ({{content.content.comment}})&nbsp;</i></span>
+          </div>
+        </div>
+      </li>
+      <!--*******一个动态结束************-->
+    
+    </ul>
+     
+  </div>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  </ion-content>
+</ion-view>

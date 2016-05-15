@@ -12,6 +12,9 @@ angular.module('userSer', [])
       },
       changeInfo: {
         method: 'POST',
+      },
+      login: {
+        method: 'POST',
       }
     })
   };

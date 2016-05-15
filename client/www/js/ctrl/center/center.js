@@ -28,6 +28,11 @@ angular.module('centerCtrl',[])
       userId: backend.getUserId()
     });
   };
+  
+  $scope.logoOut = function() {
+    $scope.loginState = false;
+    backend.clear();
+  };
 })
 .controller('userInfoCtrl', function($scope, backend, userSer, $state){
   function _init() {
@@ -138,7 +143,7 @@ angular.module('centerCtrl',[])
   $scope.back = function() {
     $ionicHistory.goBack();
   };
-  
+
   $scope.changeInfo = function () {
       userSer.postUserInfo.changeInfo({
         userId: backend.getUserId(),
