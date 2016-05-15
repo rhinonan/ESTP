@@ -24,9 +24,7 @@ angular.module('starter', ['ionic',
   'requireSer',
   'activitySer',
   'topicSer',
-  'filter',
-  'starter.controllers', 
-  'starter.services'])
+  'filter'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -62,15 +60,6 @@ angular.module('starter', ['ionic',
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
   .state('tab.dynamic', {
     url: '/dynamic',
     views: {
@@ -94,7 +83,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-find': {
         templateUrl: 'templates/tabs-find.html',
-        controller: 'DashCtrl'
+        controller: 'tabsCtrl'
       }
     }
   })  
@@ -153,24 +142,7 @@ angular.module('starter', ['ionic',
     }
   })
 
-  .state('tab.chats', {
-    url: '/chats',
-    views: {
-      'tab-chats': {
-        templateUrl: 'templates/tab-chats.html',
-        controller: 'ChatsCtrl'
-      }
-    }
-  })
-  .state('tab.chat-detail', {
-    url: '/chats/:chatId',
-    views: {
-      'tab-chats': {
-        templateUrl: 'templates/chat-detail.html',
-        controller: 'ChatDetailCtrl'
-      }
-    }
-  })
+
 
   .state('tab.center', {
     url: '/center',
@@ -222,6 +194,6 @@ angular.module('starter', ['ionic',
 
 
   // if none of the above states are matched, use this as the fallback
-  // $urlRouterProvider.otherwise('/tab/dynamic');
+  $urlRouterProvider.otherwise('/tab/center');
 
 });
