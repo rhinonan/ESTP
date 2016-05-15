@@ -8,10 +8,13 @@
 angular.module('starter', ['ionic', 
   'config',
   'ngResource',
+  'ngCordova',
   'tabsCtrl',
   'centerCtrl',
+  'loginCtrl',
   'backend',
   'userSer',
+  'workTypeSer',
   'starter.controllers', 
   'starter.services'])
 
@@ -40,7 +43,7 @@ angular.module('starter', ['ionic',
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     controller: 'tabsCtrl',
@@ -60,23 +63,23 @@ angular.module('starter', ['ionic',
   })
 
   .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
+    url: '/chats',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/tab-chats.html',
+        controller: 'ChatsCtrl'
       }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
+    }
+  })
+  .state('tab.chat-detail', {
+    url: '/chats/:chatId',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/chat-detail.html',
+        controller: 'ChatDetailCtrl'
       }
-    })
+    }
+  })
 
   .state('tab.center', {
     url: '/center',
@@ -86,7 +89,45 @@ angular.module('starter', ['ionic',
         controller: 'centerCtrl'
       }
     }
+  })  
+  .state('tab.userInfo', {
+    url: '/center/:userId',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/center/userInfo.html',
+        controller: 'userInfoCtrl'
+      }
+    }
+  })  
+  .state('tab.changePwd', {
+    url: '/center/change/changePwd',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/center/changePwd.html',
+        controller: 'changePwdCtrl'
+      }
+    }
+  })
+  .state('tab.changeInfo', {
+    url: '/center/change/changeInfo',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/center/changeInfo.html',
+        controller: 'changeInfoCtrl'
+      }
+    }
+  })
+  .state('login', {
+    url: 'tab',
+    controller: 'loginCtrl',
+    templateUrl: 'templates/login/login.html',
+  })
+  .state('register', {
+    url: 'tab',
+    controller: 'registerCtrl',
+    templateUrl: 'templates/login/register.html',
   });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

@@ -4,3 +4,5 @@ server/node_modules
 npm-debug.log
 
 server.zip
+
+client/www/lib/

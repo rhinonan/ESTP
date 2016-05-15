@@ -21,3 +21,7 @@ $calm:                            #46d9bf !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+.no-margin{
+  margin-top:0px !important;
+  margin-bottom:0px !important;
+}

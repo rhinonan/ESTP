@@ -1,0 +1,39 @@
+<ion-view view-title="详细资料">
+  <ion-content has-subheader="false">
+    <a class="item item-avatar" ng-if="loginState">
+      <img src="http://ww1.sinaimg.cn/crop.0.0.1242.1242.1024/006boC82jw8eulzgtza8uj30yi0yi0tn.jpg">
+      <h2>{{userInfo.username}}</h2>
+      <p>{{userInfo.worktype}}&emsp;&emsp;&emsp;&emsp;Tel:{{userInfo.tel}}</p>
+    </a>
+    <ion-list>
+      <ion-item href="#" class="item-icon-left">
+        <i class="icon ion-ios-telephone-outline"></i>
+        {{userInfo.tel}}
+      </ion-item>
+      <ion-item href="#" class="item-icon-left">
+        <i class="icon ion-ios-at"></i>
+        {{userInfo.email}}
+      </ion-item>
+      <ion-item href="#" class="item-icon-left">
+        <i class="icon ion-ios-people-outline"></i>
+        创业角色：{{userInfo.worktype}}
+      </ion-item>
+      <ion-item href="#" class="item-icon-left">
+        <i class="icon ion-ios-flag-outline"></i>
+        更新时间：{{userInfo.data | date:'yyyy年MM月dd日'}}
+      </ion-item>
+    </ion-list>
+    <div class="row">
+      <div class="col-50">
+        <div class="button button-balanced full-button"
+        ng-click="goChangeInfo()">
+          修改资料</div>
+      </div>
+      <div class="col-50">
+        <div class="button button-assertive full-button" 
+        ng-click="goChangePwd()">
+          修改密码</div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -4,6 +4,8 @@
   "description": "client: An Ionic project",
   "dependencies": {
     "angular-resource": "^1.5.5",
+    "cordova-plugin-file": "^3.0.0",
+    "cordova-plugin-file-transfer": "^1.5.1",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",

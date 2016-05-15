@@ -151,7 +151,7 @@ router.post('/', function (req, res, next) {
         user.user = req.body.user;
         user.tel = req.body.tel;
         user.email = req.body.email;
-        user.worktype = req.body.worktype;
+        user.worktype = req.body.workType;
         user.save(function (err) {
           if(err){
             res.status(404);
@@ -175,8 +175,9 @@ router.post('/', function (req, res, next) {
        */
       userId = req.body.userId;
       UsersModel.findById(userId, function (err, user) {
-        user.password = req.body.password;
-        user.save(function (err) {
+        if(user.password == req.body.oldPwd){
+          user.password = req.body.newPwd;
+          user.save(function (err) {
           if(err){
             res.status(404);
             res.json({
@@ -190,6 +191,13 @@ router.post('/', function (req, res, next) {
             });
           }
         });
+        }else{
+          res.status(404);
+          res.json({
+            success: false,
+            msg: '原密码错误'
+          });
+        }
       });
     break;
     case 'login':

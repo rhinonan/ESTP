@@ -5,6 +5,11 @@ angular.module('userSer', [])
       byId: {
         method: 'GET',
       }
+    }),
+    postUserInfo : $resource(configuration.apiUrl+'api/users', {}, {
+      changePwd: {
+        method: 'POST',
+      }
     })
   };
 });
