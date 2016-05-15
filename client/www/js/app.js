@@ -23,6 +23,7 @@ angular.module('starter', ['ionic',
   'commentSer',
   'requireSer',
   'activitySer',
+  'authSer',
   'topicSer',
   'filter'])
 

@@ -15,6 +15,9 @@ angular.module('userSer', [])
       },
       login: {
         method: 'POST',
+      },
+      post: {
+        method: 'POST',
       }
     })
   };

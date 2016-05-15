@@ -106,18 +106,20 @@ angular.module('dynamicCtrl',[])
       dynamicId: $stateParams.dynamicId
     }, function (info) {
       $scope.dynamic = info.data;
+
+
+      userSer.getUserInfo.byId({
+        userId: info.data.userId,
+        type: 'id'
+      }, function (info) {
+        $scope.userInfo = info.data;
+      }, function (info) {
+        console.log(info.data);
+      });
+
+
     }, function (info) {
       
-    });
-
-
-    userSer.getUserInfo.byId({
-      userId: backend.getUserId(),
-      type: 'id'
-    }, function (info) {
-      $scope.userInfo = info.data;
-    }, function (info) {
-      console.log(info.data);
     });
 
 

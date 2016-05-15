@@ -110,12 +110,15 @@ router.post('/', function (req, res, next) {
    */
   switch(type){
     case 'add':
+      var host = req.hostname;
       newUser = {
         user: req.body.user,
         username: req.body.username,
         password : req.body.password,
+        avatar: 'http://127.0.0.1:4000/images/default.jpg',
         tel: req.body.tel,
         email: req.body.email,
+        worktype: req.body.workType,
         data: new Date()
       };
       newUserModel = new UsersModel(newUser);

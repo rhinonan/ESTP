@@ -35,24 +35,28 @@ angular.module('topicCtrl',[])
       topicId: $stateParams.topicId
     }, function (info) {
       $scope.topic = info.data;
+
+      commentSer.get({
+        type: 'itemId',
+        itemId: $stateParams.topicId
+      }, function (info) {
+        $scope.commentUsers = [];
+        $scope.comments = info.data;
+        $scope.topic.comment = $scope.comments.length;
+        for(var i = info.data.length -1 ;i >= 0;i--){
+          getSingleUser(info.data[i].userId);
+        }
+      }, function (info) {
+        
+      });
+
+      
     }, function (info) {
       console.log(123);
     });
 
 
-    commentSer.get({
-      type: 'itemId',
-      itemId: $stateParams.topicId
-    }, function (info) {
-      $scope.commentUsers = [];
-      $scope.comments = info.data;
-      $scope.topic.comment = $scope.comments.length;
-      for(var i = info.data.length -1 ;i >= 0;i--){
-        getSingleUser(info.data[i].userId);
-      }
-    }, function (info) {
-      
-    });
+
 
   }
   _init();

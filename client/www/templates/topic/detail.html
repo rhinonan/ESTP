@@ -45,7 +45,7 @@
 
       <div class="bottom">
         <ion-list>
-          <a class="item item-avatar" ng-repeat="comment in comments | reverse">
+          <a class="item item-avatar" ng-repeat="comment in comments ">
             <img ng-src="{{commentUsers[$index].avatar}}">
             <h2 class="comment-user">{{comment.sponsor}}</h2>
             <p>{{comment.content}}</p>
