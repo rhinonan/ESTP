@@ -43,6 +43,19 @@ angular.module('centerCtrl',[])
     $scope.loginState = false;
     backend.clear();
   };
+
+  $scope.goPostRequire = function() {
+    $state.go('tab.post-require',{});
+  };
+  $scope.goPostDynamic = function() {
+    $state.go('tab.post-dynamic',{});
+  };
+  $scope.goPostActivity = function() {
+    $state.go('tab.post-activity',{});
+  };
+  $scope.goPostTopic = function() {
+    $state.go('tab.post-topic',{});
+  };
 })
 .controller('userInfoCtrl', function($scope, backend, userSer, $state){
   function _init() {

@@ -1,0 +1,72 @@
+<ion-view view-title="发起项目需求">
+  <ion-content>
+        <div class="list">
+          <label class="item item-input" >
+            <span class="input-label">用户名</span>
+            <input type="text"  ng-model="user.username">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">密码</span>
+            <input type="password" ng-model="user.password">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">重复密码</span>
+            <input type="password" ng-model="user.confirmPassword">
+          </label>
+
+          <label class="item item-input" >
+            <span class="input-label">昵称</span>
+            <input type="text"  ng-model="user.user">
+          </label>
+
+          <label class="item item-input">
+            <span class="input-label">手机号码</span>
+            <input type="tel" ng-model="user.tel">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">邮箱地址</span>
+            <input type="email" ng-model="user.email">
+          </label>
+    <!--       <label class="item item-input">
+            <input type="file" ng-model="user.file">
+          </label> -->
+          <label class="item item-select">
+            <div class="input-label">
+              创业角色
+            </div>
+            <select ng-model="user.workType">
+              <option selected>请选择</option>
+              <option value="{{o.type}}" ng-repeat="o in workTypeList">{{o.type}}</option>
+            </select>
+          </label>
+
+          <div class="row item">
+            <div class="col col-50">
+              <img ng-src="{{authImg}}" alt="" style="height:30px;">
+            </div>
+            <div class="col col-50">
+              <div class="no-margin button button-small butttom-full button-block"
+              ng-click="refreshAuth()">
+                更换图片
+              </div>
+            </div>
+          </div>
+
+          <label class="item item-input">
+            <span class="input-label">验证码</span>
+            <input type="text" ng-model="user.auth">
+          </label>
+          <div class="row">
+            <div class="col-50 col">
+              <button class="button button-balanced button-block" ng-click="submit()">
+                确认注册
+              </button>
+            </div>
+            <div class="col">
+              <button class="button button-positive button-block" ng-click="jump('register')">
+                返回登录
+              </button>
+            </div>
+          </div>
+  </ion-content>
+</ion-view>

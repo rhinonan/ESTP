@@ -141,6 +141,42 @@ angular.module('starter', ['ionic',
         controller: 'requireDetailCtrl'
       }
     }
+  })  
+  .state('tab.post-require', {
+    url: '/postRequire',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/require/post.html',
+        controller: 'requireDetailCtrl'
+      }
+    }
+  })  
+  .state('tab.post-dynamic', {
+    url: '/postDynamic',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/dynamic/post.html',
+        controller: 'requireDetailCtrl'
+      }
+    }
+  })
+  .state('tab.post-activity', {
+    url: '/postActivity',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/activity/post.html',
+        controller: 'requireDetailCtrl'
+      }
+    }
+  })
+  .state('tab.post-topic', {
+    url: '/postTopic',
+    views: {
+      'tab-center': {
+        templateUrl: 'templates/topic/post.html',
+        controller: 'requireDetailCtrl'
+      }
+    }
   })
 
 

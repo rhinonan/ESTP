@@ -20,7 +20,8 @@
       <div class="item item-divider">
         我的内容
       </div>
-      <div class="item dynamic row">
+      <div class="item dynamic row"
+      ng-click="goPostDynamic()">
         <div class="left col col-25">
           最新动态    
         </div>
@@ -28,15 +29,18 @@
           {{lastDynamic.content}}
         </div>
       </div>
-      <a class="item item-icon-left" href="#">
+      <a class="item item-icon-left" 
+      ng-click="goPostRequire()">
         <i class="icon ion-ios-paperplane-outline"></i>
         发起项目需求
       </a>
-      <a class="item item-icon-left" href="#">
+      <a class="item item-icon-left"
+      ng-click="goPostTopic()">
         <i class="icon ion-ios-chatbubble-outline"></i>
         发起创业话题
       </a>
-      <a class="item item-icon-left" href="#">
+      <a class="item item-icon-left"
+      ng-click="goPostActivity()">
         <i class="icon ion-ios-calendar-outline"></i>
         发起创业活动
       </a>
