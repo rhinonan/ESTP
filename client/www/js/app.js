@@ -74,7 +74,7 @@ angular.module('starter', ['ionic',
       }
     }
   })
-  .state('tab.dynamicDetail', {
+  .state('tab.dynamic-detail', {
     url: '/dynamic/:dynamicId',
     views: {
       'tab-dynamic': {
@@ -153,6 +153,6 @@ angular.module('starter', ['ionic',
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dynamic');
+  // $urlRouterProvider.otherwise('/tab/dynamic');
 
 });

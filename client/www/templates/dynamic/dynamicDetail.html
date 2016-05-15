@@ -1,43 +1,44 @@
-<ion-view view-title="{{circle.content.tag}}">
-  <ion-content>
-    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
-  <div class="content-in">
-    <div class="dynamic-cover">
-      <a ng-click=showConfirm() href=""><img src="{{circle.cover}}" alt=""/></a>
-    </div>
-    <ul class="dynamic-outside">
-      <!--********每一个li是一个动态************-->
-      <li class="dynamic" ng-click=showConfirm() ng-repeat="content in circle.content.detail">
-        <div class="time-shaft">{{content.content.date}}</div>
-        <div class="bar"></div>
-        <div class="dynamic-body">
-          <!-- <div class="tab">为梦网线下活动</div> -->
-          <div class="cont">
-            {{content.content.text}}</br>
-            <div class="row">
-              <div class="col col-33">
-                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
-              </div>
-              <div class="col col-33">
-                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
-              </div>
-              <div class="col col-33">
-                <img ng-src="{{content.content.imgs[0]}}" alt="动态图片">
-              </div>
-            </div>
+<ion-view view-title="动态详情">
+  <ion-content has-subheader="false">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"> </ion-refresher>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img ng-src="{{userInfo.avatar}}">
+        <h2>{{userInfo.user}}</h2>
+        <p>{{userInfo.worktype}}</p>
+      </div>
+
+      <div class="item">
+        {{dynamic.content}}
+      </div>
+      <label class="item item-input" ng-show="showCommentForm">
+          <input type="text" placeholder="新增评论" ng-model="temp.tempComment">
+      </label>
+      <div class="row">
+        <div class="col" ng-if="!showCommentForm"></div>
+        <div class="col"></div>
+        <div class="col">
+          <div class="button button-block button-small button-positive no-margin"
+          ng-click="showComment()">
+            {{buttonText}}
           </div>
-          <div class="bottom-bar">
-            <div class="dy-time">{{content.content.date2}}</div>
-            <span><i class="ion ion-chatbox-working">评论 ({{content.content.praise}}) </i></span>
-            <span><i class="ion ion-thumbsup">已赞 ({{content.content.comment}})&nbsp;</i></span>
+        </div>        
+        <div class="col" ng-if="showCommentForm">
+          <div class="button button-block button-small button-energized no-margin"
+          ng-click="closeComment()">
+            关闭
           </div>
         </div>
-      </li>
-      <!--*******一个动态结束************-->
-    
-    </ul>
-     
-  </div>
-    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+      </div>
+      <div ng-repeat="comment in comments | reverse">
+        <div class="item item-divider">
+          {{comment.sponsor}}
+        </div>
+        <div class="item">
+          {{comment.content}}
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

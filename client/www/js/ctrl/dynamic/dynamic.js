@@ -1,6 +1,4 @@
-/**
- * 个人中心控制器
- */
+
 angular.module('dynamicCtrl',[])
 .controller('dynamicCtrl', function($scope, backend, userSer, $state, dynamicSer, commentSer){
   function _init() {
@@ -62,7 +60,8 @@ angular.module('dynamicCtrl',[])
     commentSer.post({
       type: 'add',
       itemId: $scope.dynamics[index]._id,
-      userId: backend.getUserId()
+      userId: backend.getUserId(),
+      content: $scope.dynamics[index].tempComment
     }, function (data) {
       $scope.dynamics[index].showComment = false;
       $scope.dynamics[index].tempComment = '';
@@ -72,7 +71,8 @@ angular.module('dynamicCtrl',[])
 
 
   $scope.goDetail = function (id) {
-    $state.go('tab.dynamicDetail',{
+    console.log(id);
+    $state.go('tab.dynamic-detail',{
       dynamicId: id
     });
   };
@@ -96,9 +96,66 @@ angular.module('dynamicCtrl',[])
     });
   }
 })
-.controller('dynamicDetailCtrl',  function($scope, $stateParams){
+
+
+
+.controller('dynamicDetailCtrl',  function($scope,  commentSer, $stateParams, dynamicSer, userSer, backend){
   function _init() {
-    $scope.itemId = $stateParams.dynamicId;
+    dynamicSer.getDynamicInfo.byId({
+      type: 'id',
+      dynamicId: $stateParams.dynamicId
+    }, function (info) {
+      $scope.dynamic = info.data;
+    }, function (info) {
+      
+    });
+
+
+    userSer.getUserInfo.byId({
+      userId: backend.getUserId(),
+      type: 'id'
+    }, function (info) {
+      $scope.userInfo = info.data;
+    }, function (info) {
+      console.log(info.data);
+    });
+
+
+    commentSer.get({
+      type: 'itemId',
+      itemId: $stateParams.dynamicId
+    }, function (info) {
+      $scope.comments = info.data;
+    }, function (info) {
+      
+    });
+
+    $scope.buttonText = '添加一条评论';
+    $scope.showCommentForm = false;
+    $scope.temp = {};
   }
   _init();
+
+
+  $scope.showComment = function () {
+    if($scope.showCommentForm){
+      commentSer.post({
+        type: 'add',
+        content: $scope.temp.tempComment,
+        userId: backend.getUserId(),
+        itemId: $stateParams.dynamicId,
+      }, function (info) {
+        $scope.comments.push(info.data);
+      }, function (info) {
+        
+      });
+    }
+    $scope.showCommentForm = $scope.showCommentForm ? false : true;
+    $scope.buttonText = '提交';
+
+  };
+
+  $scope.closeComment = function() {
+    $scope.showCommentForm = false;
+  };
 });

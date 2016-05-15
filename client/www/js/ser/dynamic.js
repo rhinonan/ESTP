@@ -5,6 +5,9 @@ angular.module('dynamicSer', [])
       multi: {
         method: 'GET',
         // isArray: true
+      },
+      byId: {
+        method: 'GET'
       }
     }),
     postDynamicInfo : $resource(configuration.apiUrl+'api/dynamic', {}, {
