@@ -9,6 +9,9 @@ angular.module('userSer', [])
     postUserInfo : $resource(configuration.apiUrl+'api/users', {}, {
       changePwd: {
         method: 'POST',
+      },
+      changeInfo: {
+        method: 'POST',
       }
     })
   };

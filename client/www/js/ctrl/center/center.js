@@ -140,7 +140,7 @@ angular.module('centerCtrl',[])
   };
   
   $scope.changeInfo = function () {
-      userSer.postUserInfo.changePwd({
+      userSer.postUserInfo.changeInfo({
         userId: backend.getUserId(),
         type:'update',
         user: $scope.user.name,
