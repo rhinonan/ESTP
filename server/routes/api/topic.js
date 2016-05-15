@@ -25,6 +25,8 @@ router.get('/', function (req, res) {
             msg: err || '未传递id'
           });
         }else{
+          topic.read ++;
+          topic.save();
           res.json({
             success: true,
             data: topic
@@ -92,10 +94,11 @@ router.post('/', function (req, res) {
             sponsor: sponsor,
             userId: userId,
             title: req.body.title,
-            detail: req.body.detial,
+            detail: req.body.detail,
             tag: req.body.tag,
             read : 0,
             praise: 0,
+            comment: 0,
             date : new Date()
           };
           newTopicModel = new TopicModel(newTopic);

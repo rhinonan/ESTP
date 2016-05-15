@@ -1,0 +1,135 @@
+.content-topics{
+  background-color: #f0f0f0;
+
+  .topics{
+    list-style: none;
+  }
+  .topic{
+    height: 110px;
+    margin-bottom: 1px;
+    padding: 10px;
+    background-color:#ffffff;
+    position: relative;
+    a{
+      text-decoration: none;
+      color: #333 ;
+    }
+    .topic-title{
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+    .topic-author{
+      color: #ccc;
+      float: left;
+      margin-right: 20px;
+    }
+    .topic-tag{
+      color: #ce8d1d;
+    }
+    .topic-articl{
+      margin-top: 5px;
+      line-height: 15px;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .topic-time{
+      position: absolute;
+      font-size: 12px;
+      right: 20px;
+      top: 10px;
+      color: #ccc;
+    }
+  }
+}
+.content-topic-detail{
+  .top{
+    padding-left: 10px;
+    padding-top: 6px;
+    height: auto;
+    overflow: hidden;
+    img{
+      height: 48px;
+      width: 48px;
+      border-radius: 5px;
+      float: left;
+    }
+    .title{
+      width: auto;
+      margin-left: 20px;
+      float: left;
+      // margin-bottom: 10px;
+    }
+    .author{
+      float: left;
+      margin-left: 20px;
+      color:#777777;
+      margin-top: 10px;
+    }
+    .tag{
+      margin-top: 10px;
+      float: left;
+      margin-left: 20px;
+      color:#ce8d1d;
+    }
+  }
+  .middle{
+    padding-left: 10px;
+    margin-top: 5px;
+    .read-num{
+      height: 43px;
+      border-top:1px solid #ccc;
+      border-bottom:1px solid #ccc;
+      margin-left: -10px;
+      ul{
+        list-style: none;
+        li{
+          float: left;
+          display: inline-block;
+          line-height: 43px;
+          width: 50%;
+          text-align: center;
+          position: relative;
+          &:nth-child(2){
+            border-left:1px solid #ccc;
+            border-right:1px solid #ccc;
+          }
+        }
+      }
+    }
+    .article{
+      min-height: 250px;
+      padding-right: 10px;
+      padding-top:10px;
+    }
+  }
+  .bottom{
+    .item-avatar{
+      position: relative;
+    }
+    .comment-user{
+      color: #47d9bf;
+    }
+    .time{
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 12px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -45,6 +45,7 @@ var TopicSchema = new mongoose.Schema({
   tag: [String],
   read: Number,
   praise: Number,
+  comment: Number,
   date: {
     type : Date,
     default: Date.now

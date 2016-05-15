@@ -13,11 +13,15 @@ angular.module('starter', ['ionic',
   'centerCtrl',
   'loginCtrl',
   'dynamicCtrl',
+  'activityCtrl',
+  'topicCtrl',
   'backend',
   'userSer',
   'dynamicSer',
   'workTypeSer',
   'commentSer',
+  'activitySer',
+  'topicSer',
   'filter',
   'starter.controllers', 
   'starter.services'])
@@ -80,6 +84,51 @@ angular.module('starter', ['ionic',
       'tab-dynamic': {
         templateUrl: 'templates/dynamic/dynamicDetail.html',
         controller: 'dynamicDetailCtrl'
+      }
+    }
+  })
+  .state('tab.find', {
+    url: '/find',
+    views: {
+      'tab-find': {
+        templateUrl: 'templates/tabs-find.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })  
+  .state('tab.activity', {
+    url: '/activity',
+    views: {
+      'tab-find': {
+        templateUrl: 'templates/activity/list.html',
+        controller: 'activityCtrl'
+      }
+    }
+  })  
+  .state('tab.activity-detail', {
+    url: '/activity/:activityId',
+    views: {
+      'tab-find': {
+        templateUrl: 'templates/activity/detail.html',
+        controller: 'activityDetailCtrl'
+      }
+    }
+  })  
+  .state('tab.topic', {
+    url: '/topic',
+    views: {
+      'tab-find': {
+        templateUrl: 'templates/topic/list.html',
+        controller: 'topicCtrl'
+      }
+    }
+  })  
+  .state('tab.topic-detail', {
+    url: '/topic/:topicId',
+    views: {
+      'tab-find': {
+        templateUrl: 'templates/topic/detail.html',
+        controller: 'topicDetailCtrl'
       }
     }
   })

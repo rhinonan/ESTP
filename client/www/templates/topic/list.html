@@ -1,0 +1,26 @@
+<ion-view view-title="创业话题列表">
+  <ion-content has-subheader="false">
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  <div class="content-topics">
+    <ul class="topics clear-margin clear-padding">
+      <li class="topic" ng-repeat="topic in topicList" ng-click="goDetail(topic._id)">
+        <div class="topic-title">
+          {{topic.title}}
+        </div>
+        <div class="topic-author">
+          发起人：{{topic.name}}
+        </div> 
+        <div class="topic-tag">
+          {{topic.tag[0]}}
+        </div>
+        <a href="#/tab/find/topics/{{topic.id}}" ><div class="topic-articl">
+          {{topic.detail}}
+        </div></a>
+        <div class="topic-time">
+          {{topic.date | date:'yyyy-MM-dd'}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  </ion-content>
+</ion-view>

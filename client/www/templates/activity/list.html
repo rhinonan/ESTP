@@ -1,0 +1,25 @@
+<ion-view view-title="创业活动">
+  <ion-content has-subheader="false">
+    <div class="content">
+      <ul class="will-outside">
+        <li class="will activity" ng-repeat="activity in activityList">
+          <div class="row" ng-click="goDetail(activity._id)">
+            <div class="col col-25">
+            <img ng-src="{{activity.img}}" alt="" class="will-cover act-cover" title="封面" alt="封面">
+            </div>
+            <div class="col col-75">
+              <ul class="will-describe">
+                <li><a>{{activity.title}}</a></li><br/>
+                <li class="act-list">
+                  <i class="ion ion-location"></i>&ensp;{{activity.address}} &ensp;<i class="ion ion-clock"></i> &ensp;{{activity.holdDate | date:'yyyy-MM-dd'}}</li>
+                <li class="act-list">主办单位：{{activity.unit}}</li>
+              </ul>
+              <div class="act-des"  ng-bind-html="activity.content">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

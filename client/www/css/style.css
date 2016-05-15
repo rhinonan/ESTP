@@ -273,14 +273,14 @@ div,a,p,ul,li,img,span,h1,h2,h3,h4,h5{
 	width: 100%;
 }
 .content-in .site-content .site-head .site-cover{
-	width: 48px;
-	height: 48px;
+	width: 80px;
+	height: 80px;
 	float: left;
 	border-radius: 5px;
 }
 .content-in .site-content .site-head .site-head-main{
 	float: left;
-	margin-left: 7px;
+	margin-left: 10px;
 }
 .content-in .site-content .site-head .site-head-main .titile{
 	color: #171717;

@@ -24,6 +24,7 @@ angular.module('loginCtrl',[])
             type: 'button-balanced',
             onTap: function () {
               backend.setUserId(info.data._id);
+              backend.setUserAvatar(info.data.avatar);
               $state.go('tab.center', {},{
                 reload: true
               });

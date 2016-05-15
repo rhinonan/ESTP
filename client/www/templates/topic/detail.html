@@ -1,0 +1,59 @@
+<ion-view view-title="话题详情页">
+  <ion-content has-subheader="false">
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+    <div class="content-topic-detail" ng-click=showConfirm()>
+      <div class="top">
+        <img ng-src="http://www.ionicframework.com/img/docs/venkman.jpg" alt="话题logo图片">
+        <div class="title">{{topic.title}}</div>
+        <br>
+        <div class="author">{{topic.sponsor}}</div>
+        <div class="tag">{{topic.tag[0]}}</div> 
+        <div class="clear"></div>
+      </div>
+      <div class="middle">
+        <div class="read-num">
+          <ul>
+            <li>阅读&emsp;{{topic.read}}</li>
+            <li>评论&emsp;{{topic.comment}}</li>
+          </ul>
+        </div>
+        <div class="article">
+          {{topic.detail}}
+        </div>
+      </div>
+      
+      <label class="item item-input" ng-show="showCommentForm">
+          <input type="text" placeholder="新增评论" ng-model="temp.tempComment">
+      </label>
+      <div class="row">
+        <div class="col" ng-if="!showCommentForm"></div>
+        <div class="col"></div>
+        <div class="col">
+          <div class="button button-block button-small button-positive no-margin"
+          ng-click="showComment()">
+            {{buttonText}}
+          </div>
+        </div>        
+        <div class="col" ng-if="showCommentForm">
+          <div class="button button-block button-small button-energized no-margin"
+          ng-click="closeComment()">
+            关闭
+          </div>
+        </div>
+      </div>
+
+
+      <div class="bottom">
+        <ion-list>
+          <a class="item item-avatar" ng-repeat="comment in comments | reverse">
+            <img ng-src="{{commentUsers[$index].avatar}}">
+            <h2 class="comment-user">{{comment.sponsor}}</h2>
+            <p>{{comment.content}}</p>
+            <div class="time">{{comment.date | date: 'yyyy-MM-dd'}}</div>
+          </a>
+        </ion-list>
+      </div>
+    </div>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="活动详情页面">
+  <ion-content has-subheader="false">
+    <div class="content-in" >
+    <div class="site-content">
+      <div class="site-head">
+        <img ng-src="{{activity.img}}" alt="" class="site-cover">
+        <div class="site-head-main">
+          <div class="title">
+            {{activity.title}}
+          </div>
+          <ul class="site-describe">
+                <li class="site-list"><i class="ion ion-location"></i>&nbsp;{{activity.address}} &nbsp;&nbsp;<i class="ion ion-clock"></i>&nbsp;{{activity.holdDate | date: 'yyyy-MM-dd'}}</li>
+                <li class="site-list"><i class="ion ion-ios-telephone">&nbsp;</i>{{activity.tel}}</li>
+                <li class="site-list"><span class="site-title">负责人：</span>{{activity.master}}</li>
+                <li class="site-list"><span class="site-title">活动收费：</span>￥{{activity.charge}}</li>
+                <li class="site-list"><span class="site-title">主办单位：</span>{{activity.unit}}</li>
+              </ul>
+        </div>
+      </div>
+      <div class="site-body act-body">
+        <span class="site-body-title">活动内容</span><br/>
+        <div ng-bind-html=activity.detail></div><br/>
+              </div>
+    </div>
+  </div>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  </ion-content>
+</ion-view>
