@@ -88,9 +88,9 @@ router.post('/', function (req, res) {
         tel: req.body.tel,
         charge: req.body.charge,
         img: req.body.img,
-        peopleNum:0,
-        data: new Date(),
-        date: new Date(req.body.holdDate)
+        peopleNum:req.body.peopleNum,
+        date: new Date(),
+        holdDate: new Date(req.body.holdDate)
       };
       newActicityModel = new ActivityModel(newActicity);
       newActicityModel.save(function (err, activity) {
