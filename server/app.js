@@ -16,6 +16,7 @@ var apiDynamic = require('./routes/api/dynamic');
 var apiWorkType = require('./routes/api/workType');
 var apiProject = require('./routes/api/project');
 var apiImage = require('./routes/api/image');
+var apiAuth = require('./routes/api/auth');
 //设置跨域
 var cors = require('express-cors');
  
@@ -52,6 +53,7 @@ app.use('/api/dynamic', apiDynamic);
 app.use('/api/workType', apiWorkType);
 app.use('/api/project', apiProject);
 app.use('/api/image', apiImage);
+app.use('/api/auth', apiAuth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

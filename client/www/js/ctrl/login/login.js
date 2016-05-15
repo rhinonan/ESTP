@@ -50,7 +50,7 @@ angular.module('loginCtrl',[])
     $state.go('register', {});
   };
 })
-.controller('registerCtrl', function($scope, backend, $cordovaImagePicker){
+.controller('registerCtrl', function($scope, backend){
   // backend.setUserId('57317e9595b335df532d574b');
   console.log('用户注册控制器启动');
   $scope.pickImage = function () {
@@ -61,12 +61,12 @@ angular.module('loginCtrl',[])
         height: 800,
         quality: 80
     };
-    $cordovaImagePicker.getPictures(options)
-        .then(function (results) {
-            console.log(results);
-            $scope.imgSrc = results[0];
-        }, function (error) {
-            // error getting photos
-        });
+    // $cordovaImagePicker.getPictures(options)
+    //     .then(function (results) {
+    //         console.log(results);
+    //         $scope.imgSrc = results[0];
+    //     }, function (error) {
+    //         // error getting photos
+    //     });
 };
 });

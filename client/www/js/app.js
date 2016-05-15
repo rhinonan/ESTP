@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 
   'config',
   'ngResource',
-  'ngCordova',
+  // 'ngCordova',
   'tabsCtrl',
   'centerCtrl',
   'loginCtrl',
