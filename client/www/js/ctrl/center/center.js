@@ -2,10 +2,10 @@
  * 个人中心控制器
  */
 angular.module('centerCtrl',[])
-.controller('centerCtrl', function($scope, backend, userSer, $state){
+.controller('centerCtrl', function($scope, backend, userSer, $state, dynamicSer){
   function _init() {
-    console.log('个人中心控制器启动');
     $scope.loginState = backend.isLogin();
+    $scope.lastDynamic = {};
     userSer.getUserInfo.byId({
       userId: backend.getUserId(),
       type: 'id'
@@ -14,6 +14,16 @@ angular.module('centerCtrl',[])
     }, function (info) {
       console.log(info.data);
     });
+
+    dynamicSer.getDynamicInfo.multi({
+      type: 'multi',
+      pageNum: 1,
+    }, function (info) {
+      $scope.lastDynamic = info.data[0];
+    }, function () {
+      // body...
+    });
+
   }
   _init();
   $scope.login = function() {
@@ -28,7 +38,7 @@ angular.module('centerCtrl',[])
       userId: backend.getUserId()
     });
   };
-  
+
   $scope.logoOut = function() {
     $scope.loginState = false;
     backend.clear();
