@@ -1,0 +1,33 @@
+<ion-view view-title="需求详情页">
+  <ion-content has-subheader="false">
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+    <div class="content-demand" >
+      <div class="part-one row padding-horizontal">
+        <div class="one-left col col-20">
+          <img  class="cover" src="{{require.img}}" alt="项目logo">
+        </div>
+        <div class="one-right col">
+          <div class="title">{{require.name}}</div>
+          <div class="intro">项目简介：{{require.intro}}</div>
+          <div class="region">项目地区：{{require.area}}</div> 
+          <div class="industry">项目行业：{{require.industry}}</div>
+          <div class="link">项目链接：<a ng-src="{{require.link}}" target="_blank">{{require.link}}</a></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="part-two padding-horizontal">
+        <div class="particulars">
+          <div class="particulars-title"><i class="ico ion-clipboard"></i>项目详情</div>
+          <div class="particulars-article">{{require.detail}}</div >
+        </div>
+        <div class="part-three">
+          <div class="demand">
+            <div class="demand-title"><i class="ion-cube"></i>需求详情</div>
+            <p>需求类别：{{require.requireType}}</p>
+            <p>需求说明：{{require.requireDetail}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

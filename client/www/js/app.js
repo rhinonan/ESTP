@@ -15,11 +15,13 @@ angular.module('starter', ['ionic',
   'dynamicCtrl',
   'activityCtrl',
   'topicCtrl',
+  'requireCtrl',
   'backend',
   'userSer',
   'dynamicSer',
   'workTypeSer',
   'commentSer',
+  'requireSer',
   'activitySer',
   'topicSer',
   'filter',
@@ -129,6 +131,24 @@ angular.module('starter', ['ionic',
       'tab-find': {
         templateUrl: 'templates/topic/detail.html',
         controller: 'topicDetailCtrl'
+      }
+    }
+  })
+  .state('tab.require', {
+    url: '/require',
+    views: {
+      'tab-require': {
+        templateUrl: 'templates/require/list.html',
+        controller: 'requireCtrl'
+      }
+    }
+  })  
+  .state('tab.require-detail', {
+    url: '/require/:requireId',
+    views: {
+      'tab-require': {
+        templateUrl: 'templates/require/detail.html',
+        controller: 'requireDetailCtrl'
       }
     }
   })

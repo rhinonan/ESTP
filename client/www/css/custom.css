@@ -126,3 +126,52 @@
   top: 12px;
   right: 15px;
   font-size: 12px; }
+
+.content-demand .part-one {
+  height: auto;
+  overflow: hidden; }
+  .content-demand .part-one .cover {
+    width: 50px;
+    height: 50px; }
+  .content-demand .part-one .one-left {
+    width: 50px;
+    height: auto;
+    float: left; }
+  .content-demand .part-one .one-right {
+    float: left; }
+    .content-demand .part-one .one-right .title {
+      font-size: 18px; }
+    .content-demand .part-one .one-right .phase {
+      color: 333; }
+    .content-demand .part-one .one-right .intro {
+      overflow: hidden; }
+
+.content-demand .part-two .particulars .particulars-title {
+  border-bottom: 1px solid #00b7ee;
+  margin-bottom: 3px;
+  font-size: 16px;
+  color: #00b7ee; }
+  .content-demand .part-two .particulars .particulars-title i {
+    margin-right: 5px; }
+
+.content-demand .part-two .particulars .particulars-article {
+  text-indent: 2em; }
+  .content-demand .part-two .particulars .particulars-article img {
+    width: 100%;
+    height: auto; }
+
+.content-demand .part-two .team .team-title {
+  margin-bottom: 3px;
+  border-bottom: 1px solid #8c97cb;
+  font-size: 16px;
+  color: #8c97cb; }
+  .content-demand .part-two .team .team-title i {
+    margin-right: 5px; }
+
+.content-demand .part-three .demand .demand-title {
+  margin-bottom: 3px;
+  font-size: 16px;
+  border-bottom: 1px solid #47ac9a;
+  color: #47ac9a; }
+  .content-demand .part-three .demand .demand-title i {
+    margin-right: 5px; }

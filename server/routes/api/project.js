@@ -87,7 +87,7 @@ router.post('/', function(req, res, next) {
        * 新增动态 addDynamic
        */
       case 'add':
-        userId = req.query.userId;
+        userId = req.body.userId;
           var newProject = {
             userId: userId,
             name: req.body.name,
@@ -98,6 +98,8 @@ router.post('/', function(req, res, next) {
             detail: req.body.detail,// 项目详情
             requireType: req.body.requireType,
             requireDetail: req.body.requireDetail,
+            img: req.body.img,
+            tel: req.body.tel,
             date: new Date()
           };
           newProjectModel = new ProjectModel(newProject);

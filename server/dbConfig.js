@@ -99,6 +99,8 @@ var ProjectSchema = new mongoose.Schema({
   requireType: String,
   requireDetail: String,
   userId: String,
+  tel:String,
+  img:String,
   date: {
     type : Date,
     default: Date.now

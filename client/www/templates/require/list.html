@@ -1,0 +1,15 @@
+<ion-view view-title="项目需求页">
+  <ion-content has-subheader="false">
+    <ion-list>
+      <ion-item ng-repeat="require in requireList" 
+      class="item-thumbnail-left" 
+      ng-click="goDetail(require._id)">
+        <img ng-src="{{require.img}}" alt="这里是项目图片" >
+        <h2>{{require.name}}</h2>
+        <br>
+        <p>{{require.requireType}}</p>
+      </ion-item>
+    </ion-list>
+    <!-- <div class="ad" ng-click=showConfirm()><img src="./img/ad.png" alt=""></div> -->
+  </ion-content>
+</ion-view>
