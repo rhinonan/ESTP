@@ -1,5 +1,6 @@
 <ion-view view-title="个人中心">
   <ion-content has-subheader="false" class="center">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
      <a class="item item-avatar" ng-if="loginState" ng-click="goUserInfo()">
       <img ng-src="{{userInfo.avatar}}">
       <h2>{{userInfo.user}}</h2>

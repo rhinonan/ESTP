@@ -16,16 +16,42 @@ angular.module('centerCtrl',[])
     });
 
     dynamicSer.getDynamicInfo.multi({
-      type: 'multi',
-      pageNum: 1,
+      type: 'userId',
+      userId: backend.getUserId()
     }, function (info) {
       $scope.lastDynamic = info.data[0];
-    }, function () {
-      // body...
+    }, function (info) {
+      $scope.lastDynamic = {
+        content: '还没有发布过动态'
+      };
     });
 
   }
   _init();
+
+  $scope.doRefresh = function() {
+    $scope.loginState = backend.isLogin();
+    $scope.lastDynamic = {};
+    userSer.getUserInfo.byId({
+      userId: backend.getUserId(),
+      type: 'id'
+    }, function (info) {
+      $scope.userInfo = info.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    }, function (info) {
+      console.log(info.data);
+    });
+
+    dynamicSer.getDynamicInfo.multi({
+      type: 'userId',
+      userId: backend.getUserId()
+    }, function (info) {
+      $scope.lastDynamic = info.data[0];
+      $scope.$broadcast('scroll.refreshComplete');
+    }, function (info) {
+    });
+  };
+
   $scope.login = function() {
     $state.go('login',{});
   };

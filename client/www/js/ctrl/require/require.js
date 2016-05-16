@@ -15,7 +15,17 @@ angular.module('requireCtrl',[])
     });
   }
   _init();
-
+    
+  $scope.doRefresh = function() {
+    requireSer.get({
+      type: 'multi'
+    }, function (info) {
+      $scope.activityList = info.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    }, function (info) {
+      
+    });
+  };
   $scope.goDetail = function(id) {
     $state.go('tab.require-detail',{
       requireId: id

@@ -19,6 +19,19 @@ angular.module('dynamicCtrl',[])
     });
   }
   _init();
+
+  $scope.doRefresh = function() {
+    dynamicSer.getDynamicInfo.multi({
+      type: 'multi'
+    }, function (info) {
+      $scope.activityList = info.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    }, function (info) {
+      
+    });
+  };
+
+
   $scope.login = function() {
     $state.go('login',{});
   };

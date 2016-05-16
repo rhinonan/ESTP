@@ -1,6 +1,7 @@
 <ion-view view-title="创业动态圈">
   <ion-content>
     <div class="content">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ul class="dynamic-outside">
       <!--********每一个li是一个动态************-->
       <li class="dynamic"  ng-repeat="dynamic in dynamics">

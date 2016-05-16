@@ -1,6 +1,7 @@
 <ion-view view-title="创业活动">
   <ion-content has-subheader="false">
     <div class="content">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
       <ul class="will-outside">
         <li class="will activity" ng-repeat="activity in activityList">
           <div class="row" ng-click="goDetail(activity._id)">

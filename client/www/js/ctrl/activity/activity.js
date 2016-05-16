@@ -4,7 +4,6 @@
 angular.module('activityCtrl',[])
 .controller('activityCtrl', function($scope, backend, userSer, $state, activitySer){
   function _init() {
-    console.log('活动控制器启动');
     activitySer.get({
       type: 'multi'
     }, function (info) {
@@ -14,12 +13,25 @@ angular.module('activityCtrl',[])
     });
   }
   _init();
+  $scope.doRefresh = function() {
+    activitySer.get({
+      type: 'multi'
+    }, function (info) {
+      $scope.activityList = info.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    }, function (info) {
+      
+    });
+  };
 
+  
   $scope.goDetail = function(id) {
     $state.go('tab.activity-detail',{
       activityId: id
     });
   };
+
+
 })
 .controller('activityDetailCtrl', function($scope, $stateParams, backend, userSer, $state, activitySer){
   function _init() {

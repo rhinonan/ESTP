@@ -1,5 +1,6 @@
 <ion-view view-title="项目需求页">
   <ion-content has-subheader="false">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
       <ion-item ng-repeat="require in requireList" 
       class="item-thumbnail-left" 
