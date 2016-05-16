@@ -1,5 +1,33 @@
-<ion-view view-title="发布创业动态">
+<ion-view view-title="发布创业话题">
   <ion-content has-subheader="false">
-    发布创业话题
+    <div class="list">
+      <label class="item item-input" >
+        <span class="input-label">话题名称</span>
+        <input type="text" ng-model="topic.title">
+      </label>
+      <label class="item item-input" >
+        <span class="input-label">话题标签</span>
+        <input type="text" ng-model="topic.tag">
+      </label>
+      
+      <label class="item item-input" >
+        <span class="input-label">话题详情</span>
+        <!-- <input type="text" ng-model="topic.detail"> -->
+        <textarea rows="15" style="width: 60%; resize:none;"
+        ng-model="topic.detail"></textarea>
+      </label>
+      <div class="row">
+        <div class="col-50 col">
+          <button class="button button-balanced button-block" ng-click="submit()">
+            确认发布
+          </button>
+        </div>
+        <div class="col">
+          <button class="button button-positive button-block" ng-click="back()">
+            取消发布
+          </button>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

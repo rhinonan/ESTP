@@ -46,6 +46,7 @@ var TopicSchema = new mongoose.Schema({
   read: Number,
   praise: Number,
   comment: Number,
+  logo: String,
   date: {
     type : Date,
     default: Date.now

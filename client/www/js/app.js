@@ -24,6 +24,7 @@ angular.module('starter', ['ionic',
   'requireSer',
   'activitySer',
   'authSer',
+  'validSer',
   'topicSer',
   'filter'])
 
@@ -174,7 +175,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-center': {
         templateUrl: 'templates/topic/post.html',
-        controller: 'requireDetailCtrl'
+        controller: 'postTopicCtrl'
       }
     }
   })

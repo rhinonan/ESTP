@@ -50,7 +50,7 @@ angular.module('topicCtrl',[])
         
       });
 
-      
+
     }, function (info) {
       console.log(123);
     });
@@ -111,4 +111,37 @@ angular.module('topicCtrl',[])
       $scope.dynamics[index].comment = info.data.number;
     });
   }
+})
+
+
+
+.controller('postTopicCtrl', function($scope, $state, $timeout, backend, topicSer, validSer, showPopSer){
+  var valid = {};
+  var form = {};
+
+  function _init() {
+    $scope.topic = {};
+  }
+  _init();
+
+
+  $scope.submit = function () {
+    var pro;
+    valid = validSer($scope.topic, 3);
+    if(!valid.valid){
+      return false;
+    }else{
+      angular.copy($scope.topic,form);
+      form.type = 'add';
+      form.userId = backend.getUserId();
+      topicSer.post(form, function () {
+        pro = showPopSer('发布成功');
+        pro.then(function () {
+          $state.go('tab.center', {});
+        });
+      }, function () {
+        showPopSer('发布失败',true);
+      });
+    }
+  };
 });

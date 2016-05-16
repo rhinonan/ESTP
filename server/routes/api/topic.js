@@ -20,6 +20,7 @@ router.get('/', function (req, res) {
       topicId = req.query.topicId;
       TopicModel.findById(topicId, function (err, topic) {
         if(err || !topic){
+          res.status(404);
           res.json({
             success: false,
             msg: err || '未传递id'
@@ -42,6 +43,7 @@ router.get('/', function (req, res) {
       page = req.query.page || 0;
       pageNum = req.query.pageNum || 10;
       TopicModel.find({})
+      .sort({'_id':-1})
       .skip(page * pageNum)
       .limit(pageNum)
       .exec(function (err, topics) {
@@ -60,11 +62,11 @@ router.get('/', function (req, res) {
       });
     break;
     default:
+      res.status(404);
       res.json({
         success: false,
         msg: '参数错误'
       });
-      res.status(404);
   }
 });
 
@@ -83,11 +85,11 @@ router.post('/', function (req, res) {
     case 'add':
       UsersModel.findById(userId, function (err, user) {
         if(err || !user){
+          res.status(404);
           res.json({
             success: false,
             msg: err || '未传递用户id',
           });
-          res.status(404);
         }else{
           sponsor = user.user;
           newTopic = {
@@ -104,11 +106,11 @@ router.post('/', function (req, res) {
           newTopicModel = new TopicModel(newTopic);
           newTopicModel.save(function (err, topic) {
             if(err){
+              res.status(404);
               res.json({
                 success: false,
                 msg: err,
               });
-              res.status(404);
             }else{
               res.json({
                 success: true,
@@ -157,20 +159,20 @@ router.post('/', function (req, res) {
       }else{
         TopicModel.findById(topicId, function (err, topic) {
           if(err){
+            res.status(404);
             res.json({
               success: true,
               msg: err
             });
-            res.status(404);
           }else{
             topic.praise = topic.praise - 1;
             topic.save(function (err) {
               if(err){
+                res.status(404);
                 res.json({
                   succcess: false,
                   msg: err
                 });
-                res.status(404);
               }else{
                 res.json({
                   success: true,
@@ -183,11 +185,11 @@ router.post('/', function (req, res) {
       }
     break;
     default:
+      res.status(404);
       res.json({
         success: false,
         msg: '参数错误'
       });
-      res.status(404);
     break;
   }
 });
