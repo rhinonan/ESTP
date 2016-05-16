@@ -148,7 +148,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-center': {
         templateUrl: 'templates/require/post.html',
-        controller: 'requireDetailCtrl'
+        controller: 'postRequireCtrl'
       }
     }
   })  

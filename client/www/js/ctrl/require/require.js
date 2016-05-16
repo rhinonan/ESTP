@@ -104,4 +104,42 @@ angular.module('requireCtrl',[])
       $scope.dynamics[index].comment = info.data.number;
     });
   }
-});
+})
+.controller('postRequireCtrl',function($scope, workTypeSer, $state, $timeout, backend, requireSer, validSer, showPopSer){
+ var valid = {};
+ var form = {};
+
+ function _init() {
+   $scope.require = {};
+   workTypeSer.getWorkTypeInfo.list({
+     type: 'all'
+   }, function(data) {
+     $scope.workTypeList = data.data;
+     console.log($scope.workTypeList);
+   }, function(data) {
+     // body...
+   });
+ }
+ _init();
+
+
+ $scope.submit = function () {
+   var pro;
+   valid = validSer($scope.require, 8);
+   if(!valid.valid){
+     return false;
+   }else{
+     angular.copy($scope.require,form);
+     form.type = 'add';
+     form.userId = backend.getUserId();
+     requireSer.post(form, function () {
+       pro = showPopSer('发布成功');
+       pro.then(function () {
+         $state.go('tab.center', {});
+       });
+     }, function () {
+       showPopSer('发布失败',true);
+     });
+   }
+ }; 
+}); 

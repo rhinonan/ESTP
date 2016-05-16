@@ -2,67 +2,62 @@
   <ion-content>
   <div class="list">
     <label class="item item-input" >
-      <span class="input-label">用户名</span>
-      <input type="text"  ng-model="user.username">
+      <span class="input-label">项目名称</span>
+      <input type="text"  ng-model="require.name">
     </label>
-    <label class="item item-input">
-      <span class="input-label">密码</span>
-      <textarea style="resize: none;width: 60%" rows="10" cols="1"></textarea>
-      <!-- <input type="textA" ng-model="user.password"> -->
-    </label>
-    <label class="item item-input">
-      <span class="input-label">重复密码</span>
-      <input type="password" ng-model="user.confirmPassword">
-    </label>
-
     <label class="item item-input" >
-      <span class="input-label">昵称</span>
-      <input type="text"  ng-model="user.user">
+      <span class="input-label">项目简介</span>
+      <input type="text"  ng-model="require.intro">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">联系电话</span>
+      <input type="text"  ng-model="require.tel">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">项目地区</span>
+      <input type="text"  ng-model="require.area">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">项目行业</span>
+      <input type="text" placeholder="项目所处行业" ng-model="require.industry">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">项目链接</span>
+      <input type="text" placeholder="项目官方网站" ng-model="require.link">
     </label>
 
-    <label class="item item-input">
-      <span class="input-label">手机号码</span>
-      <input type="tel" ng-model="user.tel">
+    <label class="item item-textarea" >
+      <span class="input-label">项目详情</span>
+      <textarea style="width: 100%;resize: none;" rows="10"
+      ng-model="require.detail"></textarea>
     </label>
-    <label class="item item-input">
-      <span class="input-label">邮箱地址</span>
-      <input type="email" ng-model="user.email">
-    </label>
+
     <label class="item item-select">
       <div class="input-label">
-        创业角色
+        需求类别
       </div>
-      <select ng-model="user.workType">
+      <select ng-model="require.requireType">
         <option selected>请选择</option>
-        <option value="{{o.type}}" ng-repeat="o in workTypeList">{{o.type}}</option>
+        <option 
+          value="{{o.type}}" 
+          ng-repeat="o in workTypeList">{{o.type}}
+        </option>
       </select>
     </label>
-
-    <div class="row item">
-      <div class="col col-50">
-        <img ng-src="{{authImg}}" alt="" style="height:30px;">
-      </div>
-      <div class="col col-50">
-        <div class="no-margin button button-small butttom-full button-block"
-        ng-click="refreshAuth()">
-          更换图片
-        </div>
-      </div>
-    </div>
-
-    <label class="item item-input">
-      <span class="input-label">验证码</span>
-      <input type="text" ng-model="user.auth">
+    <label class="item item-input" >
+      <span class="input-label">需求说明</span>
+      <input type="text"  ng-model="require.requireDetail">
     </label>
+   
     <div class="row">
       <div class="col-50 col">
         <button class="button button-balanced button-block" ng-click="submit()">
-          确认注册
+          确认发布
         </button>
       </div>
       <div class="col">
-        <button class="button button-positive button-block" ng-click="jump('register')">
-          返回登录
+        <button class="button button-positive button-block" ng-click="back()">
+          取消发布
         </button>
       </div>
     </div>
