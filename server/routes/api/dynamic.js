@@ -41,6 +41,25 @@ router.get('/', function(req, res, next) {
             });
           }
         });
+        break;      
+        case "userId":
+          userId = req.query.userId;
+          DynamicModel.findOne({
+            userId: userId
+          }, function(err, dynamic) {
+            if (err || !dynamic) {
+              res.status(404);
+              res.json({
+                  success: false,
+                  msg: "用户信息查询失败"
+              });
+            } else {
+              res.json({
+                  success: true,
+                  data: dynamic
+              });
+            }
+          });
         break;
 
         /**
@@ -50,6 +69,7 @@ router.get('/', function(req, res, next) {
         page = req.query.page || 0;
         pageNum = req.query.pageNum || 10;
         DynamicModel.find({})
+          .sort({'_id':-1})
           .skip(page * pageNum)
           .limit(pageNum)
           .exec(function(err, dynamics) {
@@ -122,7 +142,7 @@ router.post('/', function(req, res, next) {
        * 新增动态 addDynamic
        */
       case 'add':
-        userId = req.query.userId;
+        userId = req.body.userId;
           var newDynamic = {
             userId: userId,
             title: req.body.title,

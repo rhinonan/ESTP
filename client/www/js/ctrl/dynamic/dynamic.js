@@ -2,7 +2,6 @@
 angular.module('dynamicCtrl',[])
 .controller('dynamicCtrl', function($scope, backend, userSer, $state, dynamicSer, commentSer){
   function _init() {
-    console.log('动态圈控制器启动');
     $scope.users = [];
     $scope.dynamics = [];
     $scope.loginState = backend.isLogin();
@@ -11,7 +10,7 @@ angular.module('dynamicCtrl',[])
       type: 'multi'
     }, function (info) {
       $scope.dynamics = info.data;
-      for(var i =info.data.length -1 ;i>=0; i--){
+      for(var i =0 ;i < info.data.length; i++){
         getSingleUser(info.data[i].userId);
         getCommentCount(info.data[i]._id, i);
       }
@@ -160,4 +159,36 @@ angular.module('dynamicCtrl',[])
   $scope.closeComment = function() {
     $scope.showCommentForm = false;
   };
-});
+})
+
+.controller('postDynamicCtrl',function($scope, workTypeSer, $state, $timeout, backend, dynamicSer, validSer, showPopSer){
+ var valid = {};
+ var form = {};
+
+ function _init() {
+   $scope.dynamic = {};
+
+ }
+ _init();
+
+
+ $scope.submit = function () {
+   var pro;
+   valid = validSer($scope.dynamic, 2);
+   if(!valid.valid){
+     return false;
+   }else{
+     angular.copy($scope.dynamic,form);
+     form.type = 'add';
+     form.userId = backend.getUserId();
+     dynamicSer.postDynamicInfo.post(form, function () {
+       pro = showPopSer('发布成功');
+       pro.then(function () {
+         $state.go('tab.center', {});
+       });
+     }, function () {
+       showPopSer('发布失败',true);
+     });
+   }
+ }; 
+}); 

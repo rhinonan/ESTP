@@ -19,6 +19,9 @@ angular.module('dynamicSer', [])
       },
       login: {
         method: 'POST',
+      },
+      post: {
+        method: 'POST',
       }
     })
   };

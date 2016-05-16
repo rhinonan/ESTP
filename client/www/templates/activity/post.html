@@ -1,5 +1,56 @@
 <ion-view view-title="发布创业活动">
-  <ion-content has-subheader="false">
-    发布创业话题
+  <ion-content>
+  <div class="list">
+    <label class="item item-input" >
+      <span class="input-label">活动名称</span>
+      <input type="text"  ng-model="activity.title">
+    </label>
+
+    <label class="item item-input" >
+      <span class="input-label">举办单位</span>
+      <input type="text"  ng-model="activity.unit">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">参与电话</span>
+      <input type="text"  ng-model="activity.tel">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">活动收费</span>
+      <input type="text" placeholder="免费则填0"  ng-model="activity.charge">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">负责人</span>
+      <input type="text"  ng-model="activity.master">
+    </label>
+    
+    <label class="item item-input" >
+      <span class="input-label">活动举办地址</span>
+      <input type="text"  ng-model="activity.address">
+    </label>
+    <label class="item item-input" >
+      <span class="input-label">活动举办日期</span>
+      <input type="date"  ng-model="activity.holdDate">
+    </label>
+
+
+    <label class="item item-textarea" >
+      <span class="input-label">活动详情</span>
+
+        <textarea rows="10" style="width: 100%; resize:none;"
+        ng-model="activity.detail"></textarea>
+    </label>
+   
+    <div class="row">
+      <div class="col-50 col">
+        <button class="button button-balanced button-block" ng-click="submit()">
+          确认发布
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-positive button-block" ng-click="back()">
+          取消发布
+        </button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

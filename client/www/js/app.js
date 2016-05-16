@@ -157,7 +157,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-center': {
         templateUrl: 'templates/dynamic/post.html',
-        controller: 'requireDetailCtrl'
+        controller: 'postDynamicCtrl'
       }
     }
   })
@@ -166,7 +166,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-center': {
         templateUrl: 'templates/activity/post.html',
-        controller: 'requireDetailCtrl'
+        controller: 'postActivityCtrl'
       }
     }
   })

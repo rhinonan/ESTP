@@ -40,6 +40,7 @@ router.get('/', function (req, res) {
       page = req.query.page || 0;
       pageNum = req.query.pageNum || 10;
       ActivityModel.find({})
+      .sort({'_id':-1})
       .skip(page * pageNum)
       .limit(pageNum)
       .exec(function (err, activities) {
