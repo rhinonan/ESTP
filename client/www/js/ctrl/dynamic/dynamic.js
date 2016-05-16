@@ -174,7 +174,7 @@ angular.module('dynamicCtrl',[])
   };
 })
 
-.controller('postDynamicCtrl',function($scope, workTypeSer, $state, $timeout, backend, dynamicSer, validSer, showPopSer){
+.controller('postDynamicCtrl',function($scope, workTypeSer, $ionicHistory,$state, $timeout, backend, dynamicSer, validSer, showPopSer){
  var valid = {};
  var form = {};
 
@@ -204,4 +204,8 @@ angular.module('dynamicCtrl',[])
      });
    }
  }; 
+
+    $scope.back = function() {
+      $ionicHistory.goBack();
+    };
 }); 

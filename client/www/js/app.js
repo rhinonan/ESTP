@@ -82,6 +82,7 @@ angular.module('starter', ['ionic',
   })
   .state('tab.find', {
     url: '/find',
+    cache: false,
     views: {
       'tab-find': {
         templateUrl: 'templates/tabs-find.html',

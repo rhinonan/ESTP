@@ -24,7 +24,7 @@ angular.module('activityCtrl',[])
     });
   };
 
-  
+
   $scope.goDetail = function(id) {
     $state.go('tab.activity-detail',{
       activityId: id
@@ -48,7 +48,7 @@ angular.module('activityCtrl',[])
   _init();
 })
 
-.controller('postActivityCtrl',function($scope, workTypeSer, $state, $timeout, backend, activitySer, validSer, showPopSer){
+.controller('postActivityCtrl',function($scope, $ionicHistory,workTypeSer, $state, $timeout, backend, activitySer, validSer, showPopSer){
  var valid = {};
  var form = {};
 
@@ -67,22 +67,25 @@ angular.module('activityCtrl',[])
 
 
  $scope.submit = function () {
-   var pro;
-   valid = validSer($scope.activity, 8);
-   if(!valid.valid){
-     return false;
-   }else{
-     angular.copy($scope.activity,form);
-     form.type = 'add';
-     form.userId = backend.getUserId();
-     activitySer.post(form, function () {
-       pro = showPopSer('发布成功');
-       pro.then(function () {
-         $state.go('tab.center', {});
-       });
-     }, function () {
-       showPopSer('发布失败',true);
-     });
-   }
- }; 
+    var pro;
+    valid = validSer($scope.activity, 8);
+    if(!valid.valid){
+      return false;
+    }else{
+      angular.copy($scope.activity,form);
+      form.type = 'add';
+      form.userId = backend.getUserId();
+      activitySer.post(form, function () {
+        pro = showPopSer('发布成功');
+        pro.then(function () {
+          $state.go('tab.center', {});
+        });
+      }, function () {
+        showPopSer('发布失败',true);
+      });
+      }
+    }; 
+    $scope.back = function() {
+      $ionicHistory.goBack();
+    };
 }); 

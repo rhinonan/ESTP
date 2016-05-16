@@ -15,7 +15,7 @@ angular.module('topicCtrl',[])
   }
   _init();
 
-  
+
   $scope.doRefresh = function() {
     topicSer.get({
       type: 'multi'
@@ -26,7 +26,7 @@ angular.module('topicCtrl',[])
       
     });
   };
-  
+
   $scope.goDetail = function(id) {
     $state.go('tab.topic-detail',{
       topicId: id
@@ -127,7 +127,7 @@ angular.module('topicCtrl',[])
 
 
 
-.controller('postTopicCtrl', function($scope, $state, $timeout, backend, topicSer, validSer, showPopSer){
+.controller('postTopicCtrl', function($scope, $state, $ionicHistory,$timeout, backend, topicSer, validSer, showPopSer){
   var valid = {};
   var form = {};
 
@@ -155,5 +155,8 @@ angular.module('topicCtrl',[])
         showPopSer('发布失败',true);
       });
     }
-  };
+  }; 
+    $scope.back = function() {
+      $ionicHistory.goBack();
+    };
 });

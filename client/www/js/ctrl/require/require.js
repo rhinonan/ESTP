@@ -15,7 +15,7 @@ angular.module('requireCtrl',[])
     });
   }
   _init();
-    
+
   $scope.doRefresh = function() {
     requireSer.get({
       type: 'multi'
@@ -115,7 +115,7 @@ angular.module('requireCtrl',[])
     });
   }
 })
-.controller('postRequireCtrl',function($scope, workTypeSer, $state, $timeout, backend, requireSer, validSer, showPopSer){
+.controller('postRequireCtrl',function($scope,$ionicHistory, workTypeSer, $state, $timeout, backend, requireSer, validSer, showPopSer){
  var valid = {};
  var form = {};
 
@@ -152,4 +152,8 @@ angular.module('requireCtrl',[])
      });
    }
  }; 
+
+    $scope.back = function() {
+      $ionicHistory.goBack();
+    };
 }); 
