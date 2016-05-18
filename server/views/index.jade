@@ -1,9 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  form(action="/api/image" method="POST" enctype="multipart/form-data")
-    div Select an image to upload:
-    input(type="file" name="iamge")
-    input(type="submit" valube="Upload Image")
+  include ./nav.jade
+  //- div#page-wrapper
+  //-   div.container-fluid
+  //-     .row
+  //-       .col-lg-12
+  //-         h1 asdasdsa
+
+  //- h1= title
+  //- p Welcome to #{title}
+  //- form(action="/api/image" method="POST" enctype="multipart/form-data")
+  //-   div Select an image to upload:
+  //-   input(type="file" name="iamge")
+  //-   input(type="submit" valube="Upload Image")

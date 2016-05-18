@@ -20,18 +20,25 @@ router.post('/', function(req, res) {
     var form = new formidable.IncomingForm();
  
     form.parse(req, function(err, fields, files) {
+      if(err){
+        res.status(404).json({
+          success: false,
+          msg: err
+        });
+        return false;
+      }
       var imgName = (new Date()).getTime() + Math.random().toString(36).substr(2,2);
       var hostname = req.hostname + ':4000/upload/';
       var tmp_path = files.file.path+'';
       // // 指定文件上传后的目录 - 示例为"images"目录。 
       var target_path = 'public/upload/' + imgName+'.jpg';
       var returnSrc = hostname +imgName+'.jpg';
-      console.log(returnSrc);
       fs.rename(tmp_path, target_path, function(err) {
         if (err) throw err;
         fs.unlink(tmp_path, function() {
            if (err) throw err;
-           res.send({
+           console.log(123123);
+           res.json({
             success: true,
             data: {
               imgSrc: returnSrc
@@ -40,5 +47,6 @@ router.post('/', function(req, res) {
         });
       });
     });
+
 });
 module.exports = router;
