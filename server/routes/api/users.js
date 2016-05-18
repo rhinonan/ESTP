@@ -115,7 +115,7 @@ router.post('/', function (req, res, next) {
         user: req.body.user,
         username: req.body.username,
         password : req.body.password,
-        avatar: 'http://127.0.0.1:4000/images/default.jpg',
+        avatar: req.body.avatar ? req.body.avatar : 'http://127.0.0.1:4000/images/default.jpg',
         tel: req.body.tel,
         email: req.body.email,
         worktype: req.body.workType,
@@ -231,6 +231,35 @@ router.post('/', function (req, res, next) {
           res.json({
             success: false,
             msg: '密码错误'
+          });
+        }
+      });
+    break;
+    case 'avatar':
+      userId = req.body.userId;
+      UsersModel.findById(userId, function (err, user) {
+        if(err || !user){
+          res.status(404);
+          res.json({
+            success: false,
+            msg: err || '未找到用户'
+          });
+        }else{
+          user.avatar = req.body.avatar;
+          user.save(function (err, user) {
+            if(err){
+              res.status(404);
+              res.json({
+                success: false,
+                msg: '更新用户信息失败'
+              });
+            }else{
+              res.json({
+                success: true,
+                msg: '修改头像成功',
+                date: user
+              });
+            }
           });
         }
       });
