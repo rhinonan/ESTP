@@ -1,0 +1,67 @@
+extends ../layout3
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 用户管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  修改用户信息
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../../api/users" method="POST")
+        .form-group
+          label.col-sm-2.control-label(for='username') 用户名
+          .col-sm-4
+            input#username.form-control(type='text',name="username", value="#{user.username}", placeholder='用户名')
+        .form-group
+          label.col-sm-2.control-label(for='password') 密码
+          .col-sm-4
+            input#password.form-control(type='password',value="#{user.password}", name="password", placeholder='密码')
+
+        .form-group
+          label.col-sm-2.control-label(for='user') 昵称
+          .col-sm-4
+            input#user.form-control(type='text',value="#{user.user}", name="user", placeholder='昵称')
+        .form-group
+          label.col-sm-2.control-label(for='tel') 电话
+          .col-sm-4
+            input#tel.form-control(type='text',value="#{user.tel}", name="tel", placeholder='电话')
+
+        .form-group
+          label.col-sm-2.control-label(for='email') 邮箱
+          .col-sm-4
+            input#email.form-control(type='text', value="#{user.email}", name="email", placeholder='邮箱')
+
+        .form-group
+          label.col-sm-2.control-label(for='worktype') 创业角色
+          .col-sm-4
+            select#worktype.form-control(name="workType",value="#{user.worktype}", )
+              option 请选择
+              each type in worktype
+                option(value="#{type.type}") #{type.type}
+
+        .form-group
+          label.col-sm-2.control-label 
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="type",value="update")
+
+        .form-group
+          label.col-sm-2.control-label 
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="from",value="admin")
+        .form-group
+          label.col-sm-2.control-label 
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="userId",value="#{user._id}")
+        ingpt
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') Sign in
+

@@ -108,6 +108,7 @@ router.post('/', function (req, res, next) {
    * @param  {json} type json
    * @return {}      
    */
+    console.log(req.body);
   switch(type){
     case 'add':
       var host = req.hostname;
@@ -118,7 +119,7 @@ router.post('/', function (req, res, next) {
         avatar: req.body.avatar ? req.body.avatar : 'http://127.0.0.1:4000/images/default.jpg',
         tel: req.body.tel,
         email: req.body.email,
-        worktype: req.body.workType,
+        worktype: req.body.worktype,
         data: new Date()
       };
       newUserModel = new UsersModel(newUser);
@@ -129,10 +130,14 @@ router.post('/', function (req, res, next) {
             msg: err
           });
         }else{
-          res.json({
-            success: true,
-            msg: '新增用户成功'
-          });
+          if(req.body.from === 'admin'){
+            res.redirect('../../admin/users');
+          }else{
+            res.json({
+              success: true,
+              msg: '新增用户成功'
+            }); 
+          }
         }
       });
     break;
@@ -153,6 +158,7 @@ router.post('/', function (req, res, next) {
         }
         user.user = req.body.user;
         user.tel = req.body.tel;
+        user.password = req.body.password;
         user.email = req.body.email;
         user.worktype = req.body.workType;
         user.save(function (err) {
@@ -163,10 +169,15 @@ router.post('/', function (req, res, next) {
               msg: '更新用户信息失败'
             });
           }else{
-            res.json({
-              success: true,
-              msg: '更新用户信息成功'
-            });
+            if(req.body.from === 'admin'){
+              res.redirect('../../admin/users');
+            }else{
+              res.json({
+                success: true,
+                msg: '更新用户信息成功'
+              });
+            }
+              
           }
         });
       });
@@ -264,8 +275,26 @@ router.post('/', function (req, res, next) {
         }
       });
     break;
-    default: 
-      res.json({
+    case 'delete':
+      UsersModel.remove({
+        _id: req.body.id
+      }, function (err) {
+        if(err){
+          res.status(404).json({
+            success: false,
+            msg: err
+          });
+        }else{
+          res.json({
+            success: true,
+            msg : '删除成功',
+          });
+        }
+      });
+    break;
+    default:
+
+      res.status(404).json({
         success: false,
         msg: '请求错误'
       });

@@ -20,6 +20,7 @@ var apiAuth = require('./routes/api/auth');
 
 
 var adminIndex = require('./routes/admin/index');
+var adminUsers = require('./routes/admin/users');
 //设置跨域
 var cors = require('express-cors');
  
@@ -36,15 +37,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cors({
-//   allowedOrigins: [
-//     'localhost'
-//   ],
-//   allowedMethods: [
-//     'GET','POST','DELETE'
-//   ]
-// }));
 
+// 接口设置
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/users', apiUsers);
@@ -58,7 +52,9 @@ app.use('/api/project', apiProject);
 app.use('/api/image', apiImage);
 app.use('/api/auth', apiAuth);
 
-app.use('/admin/index', adminIndex);
+// 后台管理设置
+app.use('/admin/index', adminIndex); 
+app.use('/admin/users', adminUsers);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 用户管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  用户列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/users/add") 新增用户
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped
+            thead
+              tr
+                th 昵称
+                th 用户名
+                th 电话
+                th 邮箱
+                th 创业角色
+                th 注册时间
+                th 操作
+            tbody
+              each user in users
+                tr
+                  td=user.user
+                  td=user.username
+                  td=user.tel
+                  td=user.email
+                  td=user.worktype
+                  td=user.data
+                  td(width="104")
+                    a.btn.btn-primary.btn-xs(href="/admin/users/update/#{user._id}") 修改
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="hideUser('#{user._id}',this)") 删除
