@@ -17,6 +17,9 @@ var apiWorkType = require('./routes/api/workType');
 var apiProject = require('./routes/api/project');
 var apiImage = require('./routes/api/image');
 var apiAuth = require('./routes/api/auth');
+
+
+var adminIndex = require('./routes/admin/index');
 //设置跨域
 var cors = require('express-cors');
  
@@ -54,6 +57,8 @@ app.use('/api/workType', apiWorkType);
 app.use('/api/project', apiProject);
 app.use('/api/image', apiImage);
 app.use('/api/auth', apiAuth);
+
+app.use('/admin/index', adminIndex);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
