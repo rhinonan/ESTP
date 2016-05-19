@@ -1,8 +1,45 @@
-extends layout
+extends ../layout
 
 block content
   .row
-    .col-md-12
-      div 创业话题管理
-
-
+    .col-lg-12
+      h1.page-header
+        | 创业话题管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  创业话题列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/topic/add") 新增创业活动
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 话题名称
+                th 话题详情
+                th 发起人
+                th 话题标签
+                th 评论数
+                th 阅读数
+                th 操作
+            tbody
+              each topic in topics
+                tr
+                  td=topic.title
+                  td.longtext-td=topic.detail
+                  td=topic.sponsor
+                  td=topic.tag
+                  td=topic.read
+                  td=topic.comment
+                  td(width="104")
+                    a.btn.btn-primary.btn-xs(href="/admin/topic/update/#{topic._id}") 修改
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{topic._id}',this,'topic')") 删除

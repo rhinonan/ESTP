@@ -4,7 +4,7 @@ block content
   .row
     .col-lg-12
       h1.page-header
-        | 创业动态管理
+        | 创业话题管理
       ol.breadcrumb
         li
           i.fa.fa-dashboard
@@ -12,18 +12,18 @@ block content
           a(href='index.html') ESPT 管理系统
         li.active
           i.fa.fa-table
-          |  新增创业动态
+          |  新增创业话题
   .row
     .col-md-12
-      form.form-horizontal(action="../../api/dynamic" method="POST")
+      form.form-horizontal(action="../../api/topic" method="POST")
         .form-group
-          label.col-sm-2.control-label(for='title') 动态标题
+          label.col-sm-2.control-label(for='title') 话题标题
           .col-sm-4
-            input#title.form-control(type='text',name="title", placeholder='动态标题')
+            input#title.form-control(type='text',name="title", placeholder='话题标题')
         .form-group
-          label.col-sm-2.control-label(for='content') 动态详情
+          label.col-sm-2.control-label(for='detail') 话题详情
           .col-sm-4
-            textarea#content.form-control(type='text',name="content",placeholder='动态详情',rows="10")
+            textarea#detail.form-control(type='text',name="detail",placeholder='话题详情',rows="10")
         .form-group
           label.col-sm-2.control-label(for='userId') 发布的用户
           .col-sm-4
@@ -31,6 +31,10 @@ block content
               each user in users
                 option(value="#{user._id}") #{user.user}
 
+        .form-group
+          label.col-sm-2.control-label(for='tag') 话题标签
+          .col-sm-4
+            input#tag.form-control(type='text',name="tag", placeholder='话题标签')
         .form-group(style="display:none")
           .col-sm-4
             input#type.form-control(type='text',name="type",value="add")
@@ -39,4 +43,3 @@ block content
         .form-group
           .col-sm-offset-2.col-sm-6
             button.btn.btn-default(type='submit') 提交
-

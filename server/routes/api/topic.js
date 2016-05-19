@@ -112,12 +112,16 @@ router.post('/', function (req, res) {
                 msg: err,
               });
             }else{
-              res.json({
-                success: true,
-                data: {
-                  topicId: topic._id
-                }
-              });
+              if(req.body.from === 'admin'){
+                res.redirect('../../admin/topic');
+              }else{
+                res.json({
+                  success: true,
+                  data: {
+                    topicId: topic._id
+                  }
+                }); 
+              }
             }
           });
         }
@@ -183,6 +187,21 @@ router.post('/', function (req, res) {
           }
         });
       }
+    break;
+
+    case 'delete':
+      topicId = req.body.id;
+      TopicModel.remove({
+        _id: topicId
+      }, function (err) {
+        if(err){
+          res.status(404);
+        }else{
+          res.json({
+            success: true
+          });
+        }
+      });
     break;
     default:
       res.status(404);
