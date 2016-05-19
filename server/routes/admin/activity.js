@@ -38,49 +38,36 @@ router.get('/add', function(req, res, next) {
     if(err){
       res.render('error');
     }else{
-      // 二层查询
-      workTypeModel.find({}, function(err, worktypes) {
-        if(err){
-          res.render('error', {});
-        }else{
-          res.render('require/add',{
-            title: 'ESTP 后台管理',
-            nav: 'require',
-            dir: '../../',
-            users: data,
-            worktypes : worktypes
-          });
-        }
+      res.render('activity/add',{
+        title: 'ESTP 后台管理',
+        nav: 'activity',
+        users: data,
+        // activities: activities,
+        dir: '../../'
       });
     }
   });
 });
 router.get('/update/:id', function(req, res, next) {
-  var requireId = req.params.id;
+  var activityId = req.params.id;
   UsersModel.find({},function (err, data) {
     if(err){
       res.render('error');
     }else{
       // 二层查询
-      workTypeModel.find({}, function(err, worktypes) {
+      activityModel.findById(activityId)
+      .lean()
+      .exec(function(err, activity) {
         if(err){
-          res.render('error', {});
+          res.render('erroe', {});
         }else{
-          // 三层查询
-          requireModel.findById(requireId, function(err, require) {
-            if(err){
-              res.render('erroe', {});
-            }else{
-
-              res.render('require/update',{
-                title: 'ESTP 后台管理',
-                nav: 'require',
-                dir: '../../../',
-                users: data,
-                require: require,
-                worktypes : worktypes
-              });
-            }
+          activity.holdDate = activity.holdDate.toLocaleString().split(' ')[0];          
+          res.render('activity/update',{
+            title: 'ESTP 后台管理',
+            nav: 'activity',
+            dir: '../../../',
+            users: data,
+            activity: activity,
           });
         }
       });

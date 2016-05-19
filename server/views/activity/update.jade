@@ -1,0 +1,72 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 创业活动管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  修改创业活动
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../../api/activity" method="POST")
+        .form-group
+          label.col-sm-2.control-label(for='title') 活动名称
+          .col-sm-4
+            input#title.form-control(type='text',value="#{activity.title}",name="title", placeholder='活动名称')
+        .form-group
+          label.col-sm-2.control-label(for='tel') 参与活动联系方式
+          .col-sm-4
+            input#tel.form-control(type='text',value="#{activity.tel}",name="tel", placeholder='参与活动联系方式')
+        .form-group
+          label.col-sm-2.control-label(for='address') 活动地址
+          .col-sm-4
+            input#address.form-control(type='text',value="#{activity.address}",name="address", placeholder='活动地址')
+        .form-group
+          label.col-sm-2.control-label(for='unit') 活动举办单位 
+          .col-sm-4
+            input#unit.form-control(type='text',value="#{activity.unit}",name="unit", placeholder='活动举办单位 ')
+        .form-group
+          label.col-sm-2.control-label(for='master') 活动负责人
+          .col-sm-2
+            input#master.form-control(type='text',value="#{activity.master}",name="master", placeholder='活动负责人')
+        .form-group
+          label.col-sm-2.control-label(for='peopleNum') 活动规模
+          .col-sm-1
+            input#peopleNum.form-control(type='text',value="#{activity.peopleNum}",name="peopleNum", placeholder='人数')
+        .form-group
+          label.col-sm-2.control-label(for='charge') 活动收费
+          .col-sm-2
+            input#charge.form-control(type='text',value="#{activity.charge}",name="charge", placeholder='免费填0')
+        .form-group
+          label.col-sm-2.control-label(for='holdDate') 活动举办时间
+          .col-sm-4
+            input#holdDate.form-control(type='date',value="#{activity.holdDate}",name="holdDate", placeholder='活动举办时间')
+        .form-group
+          label.col-sm-2.control-label(for='detail') 活动详情
+          .col-sm-4
+            textarea#detail.form-control(type='text',value="#{activity.detail}",name="detail", placeholder='活动详情',rows="10") #{activity.detail}
+        .form-group
+          label.col-sm-2.control-label(for='userId') 发布的用户
+          .col-sm-4
+            select#userId.form-control(name="userId")
+              option(value="#{activity.userId}") 请重新选择
+              each user in users
+                option(value="#{user._id}") #{user.user}     
+        .form-group(style="display:none")
+          .col-sm-4
+            input#type.form-control(type='text',name="type",value="update")
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="from",value="admin")
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text', value="#{activity._id}",name="activityId")
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

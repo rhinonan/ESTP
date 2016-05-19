@@ -79,6 +79,7 @@ router.post('/', function (req, res) {
      * 新增活动
      */
     case 'add': 
+      console.log(req.body);
       newActicity = {
         userId: req.body.userId,
         title: req.body.title,
@@ -102,13 +103,17 @@ router.post('/', function (req, res) {
           });
           res.status(404);
         }else{
-          res.json({
-            success: true,
-            msg: '新增活动成功',
-            data: {
-              acticityId: activity._id
-            }
-          });
+          if(req.body.from === 'admin'){
+            res.redirect('../../../admin/activity');
+          }else{
+            res.json({
+              success: true,
+              msg: '新增活动成功',
+              data: {
+                acticityId: activity._id
+              }
+            });
+          }
         }
       });
     break;
@@ -138,6 +143,36 @@ router.post('/', function (req, res) {
                   acticityId: activity._id
                 }
               });
+            }
+          });
+        }
+      });
+    break;
+    case 'update':
+      activityId = req.body.activityId;
+      console.log(req.body);
+      ActivityModel.findById(activityId, function(err, activity) {
+        if(err){}else{
+          activity.title = req.body.title;
+          activity.tel = req.body.tel;
+          activity.address = req.body.address;
+          activity.unit = req.body.unit;
+          activity.master = req.body.master;
+          activity.charge = req.body.charge;
+          activity.holdDate = new Date(req.body.holdDate);
+          activity.detail = req.body.detail;
+          activity.userId = req.body.userId;
+          activity.save(function(err) {
+            if(err){
+              res.status(404);
+            }else{
+              if(req.body.from === 'admin'){
+                res.redirect('../../../admin/activity');
+              }else{
+                res.json({
+                  success: true
+                });
+              }
             }
           });
         }
