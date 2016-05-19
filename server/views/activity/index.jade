@@ -1,8 +1,51 @@
-extends layout
+extends ../layout
 
 block content
   .row
-    .col-md-12
-      div 创业活动管理
-
-
+    .col-lg-12
+      h1.page-header
+        | 创业活动
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  创业活动列表列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/activity/add") 新增创业活动
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 活动名称
+                th 活动详情
+                th 地址
+                th 举办单位
+                th 负责人
+                th 电话
+                th 收费
+                th 规模
+                th 举办时间
+                th 操作
+            tbody
+              each activity in activities
+                tr
+                  td=activity.title
+                  td.longtext-td=activity.detail
+                  td=activity.address
+                  td=activity.unit
+                  td=activity.master
+                  td=activity.tel
+                  td=activity.charge
+                  td=activity.peopleNum
+                  td=activity.holdDate 
+                  td(width="104")
+                    a.btn.btn-primary.btn-xs(href="/admin/activity/update/#{activity._id}") 修改
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{activity._id}',this,'project')") 删除

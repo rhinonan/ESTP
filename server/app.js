@@ -24,6 +24,7 @@ var adminUsers = require('./routes/admin/users');
 var adminDynamic = require('./routes/admin/dynamic');
 var adminRequire = require('./routes/admin/require');
 var adminWorktype = require('./routes/admin/worktype');
+var adminActivity = require('./routes/admin/activity');
 //设置跨域
 var cors = require('express-cors');
  
@@ -61,6 +62,7 @@ app.use('/admin/users', adminUsers);
 app.use('/admin/dynamic', adminDynamic);
 app.use('/admin/require', adminRequire);
 app.use('/admin/worktype', adminWorktype);
+app.use('/admin/activity', adminActivity);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
