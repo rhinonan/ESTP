@@ -27,7 +27,7 @@ block content
                 th 动态内容
                 th 点赞个数
                 th 评论个数
-                th 发布时间
+                //- th 发布时间
                 th 发布用户id
                 th 操作
             tbody
@@ -37,7 +37,7 @@ block content
                   td.longtext-td=dynamic.content
                   td(width="76")=dynamic.praise
                   td(width="76")=dynamic.comment
-                  td(width="310")=dynamic.date
+                  //- td(width="310")=dynamic.date
                   td(width="200")=dynamic.userId
                   td(width="104")
                     a.btn.btn-primary.btn-xs(href="/admin/dynamic/update/#{dynamic._id}") 修改

@@ -154,11 +154,23 @@ router.post('/', function(req, res, next) {
               });
             }
           });
-
-
+        break;
+        case 'delete':
+          projectId = req.body.id;
+          ProjectModel.remove({
+            _id: projectId
+          }, function(err) {
+            if(err){
+              res.render('error', {});
+            }else{
+              res.json({
+                success: true,
+              });
+            }
+          });
         break;
         default:
-          res.json({
+          res.status(404).json({
               success: false,
               msg: '请求错误'
           });

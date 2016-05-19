@@ -41,11 +41,12 @@ block content
                   td=require.area
                   td=require.industry
                   td=require.link
-                  td.longtext-td=require.detail
+                  td.longtext-td
+                    div=require.detail
                   td=require.requireType
                   td=require.requireDetail
                   td=require.tel
                   td(width="104")
                     a.btn.btn-primary.btn-xs(href="/admin/dynamic/update/#{require._id}") 修改
                     span &emsp;
-                    a.btn.btn-danger.btn-xs(onclick="hide('#{require._id}',this,'dynamic')") 删除
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{require._id}',this,'project')") 删除

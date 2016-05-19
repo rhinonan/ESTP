@@ -2,9 +2,18 @@
   padding-bottom: 10px;
 }
 .longtext-td{
-  max-width: 400px;
+  max-width: 200px;
   word-wrap:break-word;
   word-break:break-all
+  max-height: 100px;
+  overflow: auto;
+}
+.longtext-td div{
+  max-height: 100px;
+  max-width: 200px;
+  word-wrap:break-word;
+  word-break:break-all;
+  overflow: auto;
 }
 #page-wrapper{
   min-height: 700px;

@@ -240,9 +240,8 @@ router.post('/', function(req, res, next) {
       case 'delete':
         DynamicModel.remove({
           _id: req.body.id 
-        }, function(err) {
+        }, function(err,data) {
           if(err){
-            // res.render('error');
             res.status(404).json({
               success: false,
             });
