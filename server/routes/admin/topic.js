@@ -45,19 +45,17 @@ router.get('/add', function(req, res, next) {
   });
 });
 router.get('/update/:id', function(req, res, next) {
-  var activityId = req.params.id;
+  var topicId = req.params.id;
   UsersModel.find({},function (err, data) {
     if(err){
       res.render('error');
     }else{
       // 二层查询
-      activityModel.findById(activityId)
-      .lean()
+      topicModel.findById(topicId)
       .exec(function(err, topic) {
         if(err){
           res.render('erroe', {});
-        }else{
-          topic.holdDate = topic.holdDate.toLocaleString().split(' ')[0];          
+        }else{     
           res.render('topic/update',{
             title: 'ESTP 后台管理',
             nav: 'topic',

@@ -81,6 +81,7 @@ router.post('/', function (req, res) {
 
   userId = req.body.userId;
   type = req.body.type;
+  console.log(req.body);
   switch(type){
     case 'add':
       UsersModel.findById(userId, function (err, user) {
@@ -188,7 +189,39 @@ router.post('/', function (req, res) {
         });
       }
     break;
-
+    case 'update':
+      topicId = req.body.topicId;
+      UsersModel.findById(userId, function (err, user) {
+        if(err || !user){
+          res.status(404);
+          res.json({
+            success: false,
+            msg: err || '未传递用户id',
+          });
+        }else{
+          TopicModel.findById(topicId, function (err, topic) {
+            topic.sponsor = user.user;
+            topic.userId= userId;
+            topic.title= req.body.title;
+            topic.detail= req.body.detail;
+            topic.tag= req.body.tag;
+            topic.save(function(err) {
+              if(err){
+                res.stauts(404);
+              }else{
+                if(req.body.from === 'admin'){
+                  res.redirect('../../../admin/topic');
+                }else{
+                  res.json({
+                    success: true
+                  });
+                }
+              }
+            });
+          });
+        }
+      });
+    break;
     case 'delete':
       topicId = req.body.id;
       TopicModel.remove({
