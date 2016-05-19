@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 创业者类型管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  创业者类型列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/worktype/add") 新增创业者类型
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 类型名称
+                th 创建时间
+                th 类型id
+                th 操作
+            tbody
+              each worktype in worktypes
+                tr
+                  td=worktype.type
+                  td=worktype.date
+                  td=worktype._id
+                  td(width="104")
+                    a.btn.btn-primary.btn-xs(href="/admin/worktype/update/#{worktype._id}") 修改
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{worktype._id}',this,'worktype')") 删除

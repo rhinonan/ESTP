@@ -37,7 +37,11 @@ router.post('/', function (req, res) {
   var workType;
   var origin;
   var to;
+  var worktypeId;
+  var newWorktype = {};
+  var newWorktypeModel;
   type =  req.body.type;
+  console.log(req.body);
   if(type === 'update'){
     origin = req.body.origin;
     to = req.body.to;
@@ -64,6 +68,58 @@ router.post('/', function (req, res) {
             res.json({
               success: true,
               msg: '更新成功'
+            });
+          }
+        });
+      }
+    });
+  }else if(type === 'delete'){
+    worktypeId = req.body.id;
+    WorkTypeModel.remove({
+      _id: worktypeId
+    }, function(err) {
+      if(err){
+        res.status(404);
+      }else{
+        res.json({
+          success: true
+        });
+      }
+    });
+  }else if(type === 'add'){
+    // worktypeId = req.body.id;
+    newWorktype.type = req.body.worktype;
+    newWorktype.date = new Date();
+    newWorktypeModel = new WorkTypeModel(newWorktype);
+    newWorktypeModel.save(function(err, data) {
+      if(err){
+        res.status(404);
+      }else{
+        if(req.body.from === 'admin'){
+          res.redirect('../../../admin/worktype');
+        }else{
+          res.json({
+            success: true,
+            data: data
+          }); 
+        }
+      }
+    });
+  }else if(type === 'change'){
+    worktypeId = req.body.id;
+    WorkTypeModel.findById(worktypeId, function (err, worktype) {
+      if(err){
+        res.render('error', {});
+      }else{
+        worktype.type = req.body.worktype;
+        worktype.save(function(err) {
+          if(err){
+            res.render('error');
+          }else if(req.body.from === 'admin'){
+            res.redirect('../../../admin/worktype');
+          }else{
+            res.json({
+              success: true,
             });
           }
         });

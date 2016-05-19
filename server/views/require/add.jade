@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 项目需求管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  新增项目需求
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../api/require" method="POST")
+        .form-group
+          label.col-sm-2.control-label(for='name') 项目名称
+          .col-sm-4
+            input#name.form-control(type='text',name="name", placeholder='项目名称')
+        .form-group
+          label.col-sm-2.control-label(for='intro') 项目简介
+          .col-sm-4
+            input#intro.form-control(type='text',name="intro", placeholder='项目简介')
+        .form-group
+          label.col-sm-2.control-label(for='industry') 项目行业 
+          .col-sm-4
+            input#industry.form-control(type='text',name="industry", placeholder='项目行业 ')
+        .form-group
+          label.col-sm-2.control-label(for='link') 项目链接
+          .col-sm-4
+            input#link.form-control(type='text',name="link", placeholder='项目链接')
+        .form-group
+          label.col-sm-2.control-label(for='detail') 项目详情
+          .col-sm-4
+            textarea#detail.form-control(type='text',name="detail", placeholder='项目详情',rows="10")
+
+        .form-group
+          label.col-sm-2.control-label(for='content') 动态详情
+          .col-sm-4
+            textarea#content.form-control(type='text',name="content",placeholder='动态详情',rows="10")
+        .form-group
+          label.col-sm-2.control-label(for='userId') 发布的用户
+          .col-sm-4
+            select#userId.form-control(name="userId")
+              each user in users
+                option(value="#{user._id}") #{user.user}
+        .form-group(style="display:none")
+          .col-sm-4
+            input#type.form-control(type='text',name="type",value="add")
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="from",value="admin")
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

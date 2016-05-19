@@ -6,3 +6,6 @@
   word-wrap:break-word;
   word-break:break-all
 }
+#page-wrapper{
+  min-height: 700px;
+}

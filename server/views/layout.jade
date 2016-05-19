@@ -46,64 +46,74 @@ html
                   span 测试目录 #{nav}
             if (nav=='users')
               li.active
-                a(href="#")
+                a(href="../../../admin/users")
                   i.glyphicon-user.glyphicon.fa-fw
                   span &emsp;用户管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/users")
                   i.glyphicon-user.glyphicon.fa-fw
                   span &emsp;用户管理
             if nav == 'dynamic'
               li.active
-                a(href="#")
+                a(href="../../../admin/dynamic")
                   i.glyphicon-equalizer.glyphicon.fa-fw
                   span &emsp;创业动态管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/dynamic")
                   i.glyphicon-equalizer.glyphicon.fa-fw
                   span &emsp;创业动态管理
             if nav == 'require'
               li.active
-                a(href="#")
+                a(href="../../../admin/require")
                   i.glyphicon-magnet.glyphicon.fa-fw
                   span &emsp;项目需求管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/require")
                   i.glyphicon-magnet.glyphicon.fa-fw
                   span &emsp;项目需求管理
             if nav == 'activity'
               li.active
-                a(href="#")
+                a(href="../../../admin/activity")
                   i.glyphicon-tree-deciduous.glyphicon.fa-fw
                   span &emsp;创业活动管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/activity")
                   i.glyphicon-tree-deciduous.glyphicon.fa-fw
                   span &emsp;创业活动管理
             if nav == 'topic'
               li.active
-                a(href="#")
+                a(href="../../../admin/topic")
                   i.glyphicon-signal.glyphicon.fa-fw
                   span &emsp;创业话题管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/topic")
                   i.glyphicon-signal.glyphicon.fa-fw
                   span &emsp;创业话题管理
             if nav == 'comment'
               li.active
-                a(href="#")
+                a(href="../../../admin/comment")
                   i.glyphicon-comment.glyphicon.fa-fw
                   span &emsp;评论管理
             else 
               li
-                a(href="#")
+                a(href="../../../admin/comment")
                   i.glyphicon-comment.glyphicon.fa-fw
                   span &emsp;评论管理
+            if nav == 'comment'
+              li.active
+                a(href="../../../admin/worktype")
+                  i.glyphicon-tags.glyphicon.fa-fw
+                  span &emsp;创业者这类型管理
+            else 
+              li
+                a(href="../../../admin/worktype")
+                  i.glyphicon-tags.glyphicon.fa-fw
+                  span &emsp;创业者这类型管理
 
       div#page-wrapper
         .container-fluid
