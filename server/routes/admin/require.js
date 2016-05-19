@@ -33,11 +33,18 @@ router.get('/add', function(req, res, next) {
     if(err){
       res.render('error');
     }else{
-      res.render('require/add',{
-        title: 'ESTP 后台管理',
-        nav: 'require',
-        dir: '../../',
-        users: data
+      workTypeModel.find({}, function(err, worktypes) {
+        if(err){
+          res.render('error', {});
+        }else{
+          res.render('require/add',{
+            title: 'ESTP 后台管理',
+            nav: 'require',
+            dir: '../../',
+            users: data,
+            worktypes : worktypes
+          });
+        }
       });
     }
   });

@@ -15,7 +15,7 @@ block content
           |  新增项目需求
   .row
     .col-md-12
-      form.form-horizontal(action="../../api/require" method="POST")
+      form.form-horizontal(action="../../api/project" method="POST")
         .form-group
           label.col-sm-2.control-label(for='name') 项目名称
           .col-sm-4
@@ -36,17 +36,29 @@ block content
           label.col-sm-2.control-label(for='detail') 项目详情
           .col-sm-4
             textarea#detail.form-control(type='text',name="detail", placeholder='项目详情',rows="10")
-        
-        .form-group
-          label.col-sm-2.control-label(for='content') 动态详情
-          .col-sm-4
-            textarea#content.form-control(type='text',name="content",placeholder='动态详情',rows="10")
         .form-group
           label.col-sm-2.control-label(for='userId') 发布的用户
           .col-sm-4
             select#userId.form-control(name="userId")
               each user in users
-                option(value="#{user._id}") #{user.user}
+                option(value="#{user._id}") #{user.user}   
+
+        .form-group
+          label.col-sm-2.control-label(for='requireType') 需求类别
+          .col-sm-4
+            select#requireType.form-control(name="requireType")
+              each worktype in worktypes
+                option(value="#{worktype.type}") #{worktype.type}
+
+
+        .form-group
+          label.col-sm-2.control-label(for='requireDetail') 需求详情
+          .col-sm-4
+            input#requireDetail.form-control(type='text',name="requireDetail", placeholder='需求详情') 
+        .form-group
+          label.col-sm-2.control-label(for='tel') 联系电话
+          .col-sm-4
+            input#tel.form-control(type='text',name="tel", placeholder='联系电话')        
         .form-group(style="display:none")
           .col-sm-4
             input#type.form-control(type='text',name="type",value="add")

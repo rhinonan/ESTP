@@ -84,9 +84,6 @@ router.post('/', function(req, res, next) {
         projectId,
         userId;
     switch (type) {
-      /**
-       * 新增动态 addDynamic
-       */
       case 'add':
         userId = req.body.userId;
           var newProject = {
@@ -111,11 +108,15 @@ router.post('/', function(req, res, next) {
                 msg: err
               });
             } else {
-              res.json({
-                success: true,
-                msg: "新增项目需求成功！",
-                data: project
-              });
+              if(req.body.from === 'admin'){
+                res.redirect('../../../admin/require');
+              }else{
+                res.json({
+                  success: true,
+                  msg: "新增项目需求成功！",
+                  data: project
+                });
+              }
             }
           });
         break;
