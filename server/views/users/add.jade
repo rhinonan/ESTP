@@ -1,4 +1,4 @@
-extends ../layout2
+extends ../layout
 
 block content
   .row
@@ -46,13 +46,9 @@ block content
               each type in worktype
                 option(value="#{type.type}") #{type.type}
 
-        .form-group
-          label.col-sm-2.control-label 
-          .col-sm-4(style="display:none")
+        .form-group(style="display:none")
+          .col-sm-4
             input#type.form-control(type='text',name="type",value="add")
-
-        .form-group
-          label.col-sm-2.control-label 
           .col-sm-4(style="display:none")
             input#type.form-control(type='text',name="from",value="admin")
         ingpt

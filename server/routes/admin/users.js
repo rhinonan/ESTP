@@ -19,7 +19,8 @@ router.get('/', function(req, res, next) {
       res.render('users/index',{
         title: 'ESTP 后台管理',
         nav: 'users',
-        users: users
+        users: users,
+        dir: '../'
       });
     }
   });
@@ -32,6 +33,7 @@ router.get('/add', function(req, res, next) {
       res.render('users/add',{
         title: 'ESTP 后台管理',
         nav: 'users',
+        dir: '../../',
         worktype: data
       });
     }
@@ -51,6 +53,7 @@ router.get('/update/:id', function(req, res, next) {
           res.render('users/update',{
             title: 'ESTP 后台管理',
             nav: 'users',
+            dir: '../../../',
             worktype: worktype,
             user: user
           });
