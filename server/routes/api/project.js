@@ -137,6 +137,7 @@ router.post('/', function(req, res, next) {
               project.link = req.body.link;
               project.detail = req.body.detail;
               project.requireType = req.body.requireType;
+              project.tel = req.body.tel;
               project.requireDetail = req.body.requireDetail;
               project.save(function (err, project) {
                 if(err){
@@ -146,11 +147,15 @@ router.post('/', function(req, res, next) {
                   });
                   res.status(404);
                 }else{
-                  res.json({
-                    success: true,
-                    msg: '更新成功',
-                    data: project
-                  });
+                  if(req.body.from === 'admin'){
+                    res.redirect('../../../admin/require');
+                  }else{
+                    res.json({
+                      success: true,
+                      msg: '更新成功',
+                      data: project
+                    });
+                  }
                 }
               });
             }

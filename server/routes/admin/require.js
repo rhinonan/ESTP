@@ -33,6 +33,7 @@ router.get('/add', function(req, res, next) {
     if(err){
       res.render('error');
     }else{
+      // 二层查询
       workTypeModel.find({}, function(err, worktypes) {
         if(err){
           res.render('error', {});
@@ -50,22 +51,30 @@ router.get('/add', function(req, res, next) {
   });
 });
 router.get('/update/:id', function(req, res, next) {
-  var dynamicId = req.params.id;
-  DynamicModel.findById(dynamicId, function(err, dynamic) {
+  var requireId = req.params.id;
+  UsersModel.find({},function (err, data) {
     if(err){
       res.render('error');
     }else{
       // 二层查询
-      UsersModel.find({},function (err, data) {
+      workTypeModel.find({}, function(err, worktypes) {
         if(err){
-          res.render('error');
+          res.render('error', {});
         }else{
-          res.render('dynamic/update',{
-            title: 'ESTP 后台管理',
-            nav: 'dynamic',
-            dir: '../../../',
-            dynamic: dynamic,
-            users: data 
+          // 三层查询
+          requireModel.findById(requireId, function(err, require) {
+            if(err){
+              res.render('erroe', {});
+            }else{              
+              res.render('require/update',{
+                title: 'ESTP 后台管理',
+                nav: 'require',
+                dir: '../../../',
+                users: data,
+                require: require,
+                worktypes : worktypes
+              });
+            }
           });
         }
       });

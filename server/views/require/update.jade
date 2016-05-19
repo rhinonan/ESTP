@@ -12,32 +12,66 @@ block content
           a(href='index.html') ESPT 管理系统
         li.active
           i.fa.fa-table
-          |  修改创业动态
+          |  修改项目需求
   .row
     .col-md-12
-      form.form-horizontal(action="../../../api/dynamic" method="POST")
+      form.form-horizontal(action="../../../api/project" method="POST")
         .form-group
-          label.col-sm-2.control-label(for='title') 动态标题
+          label.col-sm-2.control-label(for='name') 项目名称
           .col-sm-4
-            input#title.form-control(type='text',value="#{dynamic.title}",name="title", placeholder='动态标题')
+            input#name.form-control(type='text',value="#{require.name}",name="name", placeholder='项目名称')
         .form-group
-          label.col-sm-2.control-label(for='content') 动态详情 #{dynamic.content}
+          label.col-sm-2.control-label(for='intro') 项目简介
           .col-sm-4
-            textarea#content.form-control(type='text',name="content",placeholder='动态详情',rows="10") #{dynamic.content}
+            input#intro.form-control(type='text',value="#{require.intro}",name="intro", placeholder='项目简介')
+        .form-group
+          label.col-sm-2.control-label(for='industry') 项目行业 
+          .col-sm-4
+            input#industry.form-control(type='text',value="#{require.industry}",name="industry", placeholder='项目行业 ')
+        .form-group
+          label.col-sm-2.control-label(for='area') 项目地区 
+          .col-sm-4
+            input#area.form-control(type='text',value="#{require.area}",name="area", placeholder='项目地区 ')
+        .form-group
+          label.col-sm-2.control-label(for='link') 项目链接
+          .col-sm-4
+            input#link.form-control(type='text',value="#{require.link}",name="link", placeholder='项目链接')
+        .form-group
+          label.col-sm-2.control-label(for='detail') 项目详情 
+          .col-sm-4
+            textarea#detail.form-control(type='text',name="detail", placeholder='项目详情',rows="10") #{require.detail}
         .form-group
           label.col-sm-2.control-label(for='userId') 发布的用户
           .col-sm-4
-            select#userId.form-control(name="userId",value="#{dynamic.userId}")
-              option(value="#{dynamic.userId}") 请重新选择
+            select#userId.form-control(name="userId")
+              option(value="#{require.userId}") 请重新选择
               each user in users
-                option(value="#{user._id}") #{user.user}
+                option(value="#{user._id}") #{user.user}   
+
+        .form-group
+          label.col-sm-2.control-label(for='requireType') 需求类别
+          .col-sm-4
+            select#requireType.form-control(name="requireType")
+              option(value="#{require.requireType}") 请重新选择
+              each worktype in worktypes
+                option(value="#{worktype.type}") #{worktype.type}
+
+
+        .form-group
+          label.col-sm-2.control-label(for='requireDetail') 需求详情
+          .col-sm-4
+            input#requireDetail.form-control(type='text',value="#{require.requireDetail}",name="requireDetail", placeholder='需求详情') 
+        .form-group
+          label.col-sm-2.control-label(for='tel') 联系电话
+          .col-sm-4
+            input#tel.form-control(type='text',value="#{require.tel}",name="tel", placeholder='联系电话')        
         .form-group(style="display:none")
           .col-sm-4
             input#type.form-control(type='text',name="type",value="update")
           .col-sm-4(style="display:none")
             input#type.form-control(type='text',name="from",value="admin")
           .col-sm-4(style="display:none")
-            input#type.form-control(type='text',name="dynamic",value="#{dynamic._id}")
+            input#type.form-control(type='text',name="projectId",value="#{require._id}")
         .form-group
           .col-sm-offset-2.col-sm-6
             button.btn.btn-default(type='submit') 提交
