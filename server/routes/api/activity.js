@@ -143,8 +143,22 @@ router.post('/', function (req, res) {
         }
       });
     break;
+    case 'delete':
+      activityId  = req.body.id;
+      ActivityModel.remove({
+        _id: activityId
+      }, function(err, data) {
+        if(err){
+
+        }else{
+          res.json({
+            success: true
+          });
+        }
+      });
+    break;
     default:
-      res.json({
+      res.status(404).json({
         success: false,
         msg: '参数错误'
       });

@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
       }
       res.render('activity/index',{
         title: 'ESTP 后台管理',
-        nav: 'avtivity',
+        nav: 'activity',
         activities: activities,
         dir: '../'
       });
