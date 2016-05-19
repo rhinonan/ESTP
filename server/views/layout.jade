@@ -34,16 +34,16 @@ html
               b.caret
         div.collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav.side-nav
-            if nav=='debug'
+            if nav=='index'
               li.active
-                a(href="#")
-                  i.glyphicon-music.glyphicon.fa-fw
-                  span 测试目录 #{nav}
+                a(href="../../../admin/index")
+                  i.fa-dashboard.fa-fw.fa
+                  span &emsp;管理首页 
             else 
               li
-                a(href="#")
-                  i.glyphicon-user.glyphicon.fa-fw
-                  span 测试目录 #{nav}
+                a(href="../../../admin/index")
+                  i.fa-dashboard.fa-fw.fa
+                  span &emsp;管理首页 
             if (nav=='users')
               li.active
                 a(href="../../../admin/users")

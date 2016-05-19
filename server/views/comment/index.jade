@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 评论管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  评论列表
+  .row
+    .col-lg-12
+      //- .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/activity/add") 新增评论
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 评论人
+                th 评论详情
+                th itemId
+                th 操作
+            tbody
+              each comment in comments
+                tr
+                  td=comment.sponsor
+                  td.longtext-td=comment.content
+                  td=comment.itemId
+                  td(width="54")
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{comment._id}',this,'comment')") 删除

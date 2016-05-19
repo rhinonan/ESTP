@@ -2,7 +2,104 @@ extends layout
 
 block content
   .row
-    .col-md-12
-      div 123
-
-
+    .col-lg-12
+      h1.page-header
+        | ESTP后台管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+  .row
+    .col-lg-12
+      .row
+        .col-lg-4.col-md-6
+          .panel.panel-primary
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-user.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=user
+                  div 用户总数
+            a(href='../../../admin/users')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-4.col-md-6
+          .panel.panel-green
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-equalizer.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=dynamic
+                  div 创业动态总数
+            a(href='../../../admin/dynamic')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-4.col-md-6
+          .panel.panel-yellow
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-magnet.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=require
+                  div 项目需求总数
+            a(href='../../../admin/require')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-4.col-md-6
+          .panel.panel-red
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-tree-deciduous.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=activity
+                  div 创业活动总数
+            a(href='../../../admin/activity')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-4.col-md-6
+          .panel.panel-primary
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-signal.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=topic
+                  div 创业话题总数
+            a(href='../../../admin/topic')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-4.col-md-6
+          .panel.panel-green
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.glyphicon-comment.glyphicon.fa-5x
+                .col-xs-9.text-right
+                  .huge=comment
+                  div 评论总数
+            a(href='../../../admin/comment')
+              .panel-footer
+                span.pull-left View Details
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+                .clearfix

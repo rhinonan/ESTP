@@ -105,7 +105,6 @@ router.post('/', function (req, res) {
   var newComment;
 
   type = req.body.type;
-  console.log(type);
   switch(type){
     case 'add':
       userId = req.body.userId;
@@ -141,6 +140,20 @@ router.post('/', function (req, res) {
                 data: comment
               });
             }
+          });
+        }
+      });
+    break;
+    case 'delete':
+      commentId = req.body.id;
+      CommentModel.remove({
+        _id: commentId
+      }, function(err) {
+        if(err){
+          res.status(404);
+        }else{
+          res.json({
+            success: true
           });
         }
       });
