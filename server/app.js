@@ -21,6 +21,7 @@ var apiAuth = require('./routes/api/auth');
 
 var adminIndex = require('./routes/admin/index');
 var adminUsers = require('./routes/admin/users');
+var adminDynamic = require('./routes/admin/dynamic');
 //设置跨域
 var cors = require('express-cors');
  
@@ -55,6 +56,7 @@ app.use('/api/auth', apiAuth);
 // 后台管理设置
 app.use('/admin/index', adminIndex); 
 app.use('/admin/users', adminUsers);
+app.use('/admin/dynamic', adminDynamic);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

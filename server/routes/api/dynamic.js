@@ -136,11 +136,9 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var type = req.body.type,
         newDynamicModel,
-        userId;
+        userId,
+        dynamicId;
     switch (type) {
-      /**
-       * 新增动态 addDynamic
-       */
       case 'add':
         userId = req.body.userId;
           var newDynamic = {
@@ -159,88 +157,128 @@ router.post('/', function(req, res, next) {
                 msg: err
               });
             } else {
-              res.json({
-                success: true,
-                msg: "新增动态成功！"
-              });
+              if(req.body.from === 'admin'){
+                res.redirect('/admin/dynamic');
+              }else{
+                res.json({
+                  success: true,
+                  msg: "新增动态成功！"
+                });
+              }
             }
           });
         break;
           /**
            * 点赞/取消点赞
            */
-        case 'praise':
-            /**
-             * 点赞数量加减
-             */
-            praise = req.body.praise;
-            dynamicId = req.body.dynamicId;
-            if (praise) {
-              // 点赞
-              DynamicModel.findById(dynamicId, function(err, dynamic) {
-                if (err || !dynamic) {
-                  res.json({
-                      success: true,
-                      msg: err || '未传递动态id'
-                  });
-                  res.status(404);
-                } else {
-                  dynamic.praise = dynamic.praise + 1;
-                  dynamic.save(function(err) {
-                    if (err) {
-                        res.json({
-                            succcess: false,
-                            msg: err
-                        });
-                        res.status(404);
-                    } else {
-                        res.json({
-                            success: true,
-                            msg: '点赞成功'
-                        });
-                    }
-                  });
-                }
-              });
-            } else {
-              DynamicModel.findById(dynamicId, function(err, dynamic) {
-                if (err) {
-                  res.json({
-                      success: true,
-                      msg: err
-                  });
-                  res.status(404);
-                } else {
-                  dynamic.praise = dynamic.praise - 1;
-                  dynamic.save(function(err) {
-                    if (err) {
+      case 'praise':
+          /**
+           * 点赞数量加减
+           */
+          praise = req.body.praise;
+          dynamicId = req.body.dynamicId;
+          if (praise) {
+            // 点赞
+            DynamicModel.findById(dynamicId, function(err, dynamic) {
+              if (err || !dynamic) {
+                res.json({
+                    success: true,
+                    msg: err || '未传递动态id'
+                });
+                res.status(404);
+              } else {
+                dynamic.praise = dynamic.praise + 1;
+                dynamic.save(function(err) {
+                  if (err) {
                       res.json({
                           succcess: false,
                           msg: err
                       });
                       res.status(404);
-                    } else {
+                  } else {
                       res.json({
                           success: true,
-                          msg: '取消点赞成功'
+                          msg: '点赞成功'
                       });
-                      }
-                  });
-                }
+                  }
+                });
+              }
+            });
+          } else {
+            DynamicModel.findById(dynamicId, function(err, dynamic) {
+              if (err) {
+                res.json({
+                    success: true,
+                    msg: err
+                });
+                res.status(404);
+              } else {
+                dynamic.praise = dynamic.praise - 1;
+                dynamic.save(function(err) {
+                  if (err) {
+                    res.json({
+                        succcess: false,
+                        msg: err
+                    });
+                    res.status(404);
+                  } else {
+                    res.json({
+                        success: true,
+                        msg: '取消点赞成功'
+                    });
+                    }
+                });
+              }
+            });
+          }
+          break;
+
+
+          /**
+           * 默认
+           */
+      case 'delete':
+        DynamicModel.remove({
+          _id: req.body.id 
+        }, function(err) {
+          if(err){
+            // res.render('error');
+            res.status(404).json({
+              success: false,
+            });
+          }else{
+            res.json({
+              success: true,
+            });
+          }
+        });
+      break;
+
+      case 'update':
+      dynamicId = req.body.dynamic;
+        DynamicModel.findById(dynamicId, function(err, dynamic) {
+          dynamic.title = req.body.title;
+          dynamic.content = req.body.content;
+          dynamic.userId = req.body.userId;
+          dynamic.save(function() {
+            if(err){
+              res.status(404);
+            }else if(req.body.from === 'admin'){
+              res.redirect('../../../admin/dynamic');
+            }else{
+              res.json({
+                success: true
               });
             }
-            break;
-
-
-            /**
-             * 默认
-             */
-        default:
-          res.json({
-              success: false,
-              msg: '请求错误'
           });
-        break;
+        });
+      break;     
+      default:
+        res.json({
+            success: false,
+            msg: '请求错误'
+        });
+      break;
     }
 
 });

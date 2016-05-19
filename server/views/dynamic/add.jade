@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 创业动态管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  新增创业动态
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../api/dynamic" method="POST")
+        .form-group
+          label.col-sm-2.control-label(for='title') 动态标题
+          .col-sm-4
+            input#title.form-control(type='text',name="title", placeholder='动态标题')
+        .form-group
+          label.col-sm-2.control-label(for='content') 动态详情
+          .col-sm-4
+            textarea#content.form-control(type='text',name="content",placeholder='动态详情',rows="10")
+        .form-group
+          label.col-sm-2.control-label(for='userId') 发布的用户
+          .col-sm-4
+            select#userId.form-control(name="userId")
+              each user in users
+                option(value="#{user._id}") #{user.user}
+        .form-group(style="display:none")
+          .col-sm-4
+            input#type.form-control(type='text',name="type",value="add")
+          .col-sm-4(style="display:none")
+            input#type.form-control(type='text',name="from",value="admin")
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

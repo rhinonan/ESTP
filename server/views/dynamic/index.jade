@@ -1,8 +1,45 @@
-extends layout
+extends ../layout
 
 block content
   .row
-    .col-md-12
-      div 创业动态管理界面
-
-
+    .col-lg-12
+      h1.page-header
+        | 创业动态管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  创业动态列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/admin/dynamic/add") 新增动态
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 动态标题
+                th 动态内容
+                th 点赞个数
+                th 评论个数
+                th 发布时间
+                th 发布用户id
+                th 操作
+            tbody
+              each dynamic in dynamics
+                tr
+                  td=dynamic.title
+                  td.longtext-td=dynamic.content
+                  td(width="76")=dynamic.praise
+                  td(width="76")=dynamic.comment
+                  td(width="310")=dynamic.date
+                  td(width="200")=dynamic.userId
+                  td(width="104")
+                    a.btn.btn-primary.btn-xs(href="/admin/dynamic/update/#{dynamic._id}") 修改
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="hide('#{dynamic._id}',this,'dynamic')") 删除

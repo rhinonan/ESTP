@@ -108,45 +108,42 @@ router.post('/', function (req, res) {
   console.log(type);
   switch(type){
     case 'add':
-    /**
-     * 新增评论
-     */
-    userId = req.body.userId;
-    itemId = req.body.itemId;
-    UsersModel.findById(userId, function (err, user) {
-      if(err || !user || !itemId){
-        res.status(404);
-        res.json({
-          success: false,
-          msg: err || '未传递userId或者itemId'
-        });
-        
-      }else{
-        sponsor = user.user;
-        newComment = {
-          content: req.body.content,
-          userId: userId,
-          sponsor: sponsor,
-          itemId : itemId,
-          date: new Date()
-        };
-        newCommentModel = new CommentModel(newComment);
-        newCommentModel.save(function (err, comment) {
-          if(err){
-            res.status(404);
-            res.json({
-              success: false,
-              msg: err,
-            });
-          }else{
-            res.json({
-              success: true,
-              data: comment
-            });
-          }
-        });
-      }
-    });
+      userId = req.body.userId;
+      itemId = req.body.itemId;
+      UsersModel.findById(userId, function (err, user) {
+        if(err || !user || !itemId){
+          res.status(404);
+          res.json({
+            success: false,
+            msg: err || '未传递userId或者itemId'
+          });
+          
+        }else{
+          sponsor = user.user;
+          newComment = {
+            content: req.body.content,
+            userId: userId,
+            sponsor: sponsor,
+            itemId : itemId,
+            date: new Date()
+          };
+          newCommentModel = new CommentModel(newComment);
+          newCommentModel.save(function (err, comment) {
+            if(err){
+              res.status(404);
+              res.json({
+                success: false,
+                msg: err,
+              });
+            }else{
+              res.json({
+                success: true,
+                data: comment
+              });
+            }
+          });
+        }
+      });
     break;
     default:
       res.status(404);
