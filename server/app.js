@@ -27,6 +27,7 @@ var adminWorktype = require('./routes/admin/worktype');
 var adminActivity = require('./routes/admin/activity');
 var adminTopic = require('./routes/admin/topic');
 var adminComment = require('./routes/admin/comment');
+var download = require('./routes/download');
 //设置跨域
 var cors = require('express-cors');
  
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 接口设置
 app.use('/', routes);
+app.use('/download', download);
 app.use('/users', users);
 app.use('/api/users', apiUsers);
 app.use('/api/activity', apiActivity);

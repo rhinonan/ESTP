@@ -89,7 +89,8 @@ router.post('/', function (req, res) {
         master: req.body.master,
         tel: req.body.tel,
         charge: req.body.charge,
-        img: req.body.img,
+        img: 'http://'+ req.hostname+':4000/images/activity.jpg',
+
         peopleNum:req.body.peopleNum,
         date: new Date(),
         holdDate: new Date(req.body.holdDate)

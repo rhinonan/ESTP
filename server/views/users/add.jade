@@ -40,9 +40,9 @@ block content
             input#email.form-control(type='text', name="email", placeholder='邮箱')
 
         .form-group
-          label.col-sm-2.control-label(for='worktype') 创业角色
+          label.col-sm-2.control-label(for='workType') 创业角色
           .col-sm-4
-            select#worktype.form-control(name="worktype")
+            select#workType.form-control(name="workType")
               each type in worktype
                 option(value="#{type.type}") #{type.type}
 

@@ -1,4 +1,4 @@
-var baseUrl = 'http://127.0.0.1:4000/api/';
+var baseUrl = 'http://121.196.203.217:4000/api/';
 var url;
 function hide(id,foo,type) {
   if(type){

@@ -96,7 +96,7 @@ router.post('/', function(req, res, next) {
             detail: req.body.detail,// 项目详情
             requireType: req.body.requireType,
             requireDetail: req.body.requireDetail,
-            img: req.body.img,
+            img: 'http://'+ req.hostname+':4000/images/require.png',
             tel: req.body.tel,
             date: new Date()
           };

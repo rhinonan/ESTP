@@ -108,7 +108,6 @@ router.post('/', function (req, res, next) {
    * @param  {json} type json
    * @return {}      
    */
-    console.log(req.body);
   switch(type){
     case 'add':
       var host = req.hostname;
@@ -116,10 +115,10 @@ router.post('/', function (req, res, next) {
         user: req.body.user,
         username: req.body.username,
         password : req.body.password,
-        avatar: req.body.avatar ? req.body.avatar : 'http://127.0.0.1:4000/images/default.jpg',
+        avatar: req.body.avatar ? req.body.avatar : 'http://'+host+':4000/images/default.jpg',
         tel: req.body.tel,
         email: req.body.email,
-        worktype: req.body.worktype,
+        worktype: req.body.workType,
         data: new Date()
       };
       newUserModel = new UsersModel(newUser);
@@ -158,7 +157,7 @@ router.post('/', function (req, res, next) {
         }
         user.user = req.body.user;
         user.tel = req.body.tel;
-        user.password = req.body.password;
+        // user.password = req.body.password;
         user.email = req.body.email;
         user.worktype = req.body.workType;
         user.save(function (err) {
